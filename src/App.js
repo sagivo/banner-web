@@ -1,18 +1,16 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { Foo } from "./Foo";
+import Billboard from "./Billboard";
 
 function App() {
   return (
     <div className="App">
+      <h1>Crypto Billboard</h1>
+      <Billboard />
+
+      <div id="actions"></div>
       <Foo />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        Yo2
-      </header>
+      <h2>About</h2>
     </div>
   );
 }

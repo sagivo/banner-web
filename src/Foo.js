@@ -79,7 +79,7 @@ export function Foo() {
   return (
     <div>
       <div>Message: {message}</div>
-      <div>Price: {price}</div>
+      <div>Price: Ξ{price}</div>
       {hasMetamask ? hasMeta() : noMeta()}
     </div>
   );

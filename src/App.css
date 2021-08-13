@@ -1,38 +1,107 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css?family=Exo+2");
+
+:root {
+  --neon-text-color: #f40;
+  --neon-border-color: #08f;
+  --billboard-width: 600px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+body {
+  background-color: black;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+#billboard {
+  margin: auto;
+  padding: 20px;
+
+  /* text-transform: uppercase; */
+  border-radius: 15px;
+  font-family: "Exo 2";
+  display: flex;
+  width: var(--billboard-width);
+  height: 400px;
+  text-align: center;
+  background-color: black;
+  color: white;
+
+  align-items: center;
+
+  animation: flicker 2s infinite alternate;
+
+  box-shadow: 0 0 5rem #fff, 0 0 0.2rem #fff, 0 0 2rem #bc13fe,
+    0 0 0.8rem #bc13fe, 0 0 2.8rem #bc13fe, inset 0 0 1.3rem #bc13fe;
 }
 
-@keyframes App-logo-spin {
-  from {
+#billboard::selection {
+  background-color: var(--neon-border-color);
+  color: var(--neon-text-color);
+}
+
+#billboard:focus {
+  outline: none;
+}
+
+@keyframes flicker {
+  100% {
+    text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #bc13fe,
+      0 0 80px #bc13fe, 0 0 90px #bc13fe, 0 0 100px #bc13fe, 0 0 150px #bc13fe;
+  }
+  0% {
+    text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 6px #fff, 0 0 10px #bc13fe,
+      0 0 45px #bc13fe, 0 0 55px #bc13fe, 0 0 70px #bc13fe, 0 0 80px #bc13fe;
+  }
+}
+
+#lights {
+  margin: 20px auto -20px auto;
+  /* position: absolute; */
+  display: flex;
+  align-content: space-between;
+  justify-content: space-evenly;
+  width: var(--billboard-width);
+
+  background-color: gray;
+  height: 2px;
+}
+
+.light {
+  margin-top: -50px;
+  border-top: 50px solid white;
+  border-left: 65px solid transparent;
+  border-right: 65px solid transparent;
+  width: 20px;
+
+  background: linear-gradient(
+    top,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border-radius: 100% 100% 0 0;
+  opacity: 0.1;
+  /* animation: ray_anim 2s linear infinite; */
+}
+
+@keyframes ray_anim {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  100% {
     transform: rotate(360deg);
   }
+}
+
+#pole {
+  width: 50px;
+  height: 200px;
+  background-color: rgba(122, 206, 206, 0.8);
+  border: 1px solid black;
+  margin: auto;
+}
+
+#road {
+  width: 100%;
+  height: 5px;
+  background-color: gray;
 }
