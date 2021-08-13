@@ -55,7 +55,6 @@ body {
 
 #lights {
   margin: 20px auto -20px auto;
-  /* position: absolute; */
   display: flex;
   align-content: space-between;
   justify-content: space-evenly;
@@ -72,23 +71,20 @@ body {
   border-right: 65px solid transparent;
   width: 20px;
 
-  background: linear-gradient(
-    top,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.8) 50%,
-    rgba(255, 255, 255, 0) 100%
+  border-radius: 25% 25% 0 0;
+  mask-image: -webkit-gradient(
+    linear,
+    right top,
+    right bottom,
+    from(rgba(0, 0, 0, 0)),
+    to(rgba(0, 0, 0, 1))
   );
-  border-radius: 100% 100% 0 0;
-  opacity: 0.1;
-  /* animation: ray_anim 2s linear infinite; */
+  animation: blinker 1s linear infinite;
 }
 
-@keyframes ray_anim {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
+@keyframes blinker {
+  50% {
+    opacity: 0;
   }
 }
 

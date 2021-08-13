@@ -9,7 +9,7 @@ function App() {
       <Billboard />
 
       <div id="actions"></div>
-      <Foo />
+      {/* <Foo /> */}
       <h2>About</h2>
     </div>
   );
