@@ -3,7 +3,8 @@
 :root {
   --neon-text-color: #f40;
   --neon-border-color: #08f;
-  --billboard-width: 600px;
+  --billboard-width: 80%;
+  --billboard-max-width: 800px;
 }
 
 body {
@@ -13,14 +14,12 @@ body {
 
 #billboard {
   margin: auto;
-  padding: 20px;
-
-  /* text-transform: uppercase; */
+  padding: 60px 20px;
   border-radius: 15px;
   font-family: "Exo 2";
   display: flex;
   width: var(--billboard-width);
-  height: 400px;
+  max-width: var(--billboard-max-width);
   text-align: center;
   background-color: black;
   color: white;
@@ -59,6 +58,7 @@ body {
   align-content: space-between;
   justify-content: space-evenly;
   width: var(--billboard-width);
+  max-width: var(--billboard-max-width);
 
   background-color: gray;
   height: 2px;
@@ -141,11 +141,10 @@ body {
 }
 
 #pole {
-  width: 50px;
+  width: 30px;
   height: 200px;
-  background-color: rgba(122, 206, 206, 0.8);
-  border: 1px solid black;
-  margin: auto;
+  background-color: rgb(96, 146, 146);
+  margin: -20px auto 0 auto;
 }
 
 #road {
