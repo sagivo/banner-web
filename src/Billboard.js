@@ -28,13 +28,31 @@ function Billboard() {
 
   return (
     <div id="container">
-      {/* <div class="sky">
-        <div class="moon">
-          <div class="stars stars1">*</div>
-          <div class="stars stars2">*</div>
-          <div class="shooting-star"></div>
+      <div id="sky">
+        <div class="stars shooting-star"></div>
+        <div class="stars shooting-star"></div>
+        <div id="star1" class="stars">
+          *
         </div>
-      </div> */}
+        <div id="star2" class="stars">
+          *
+        </div>
+        <div id="star3" class="stars">
+          *
+        </div>
+        <div id="star4" class="stars">
+          *
+        </div>
+        <div id="star5" class="stars">
+          *
+        </div>
+        <div id="star6" class="stars">
+          *
+        </div>
+        <div id="star7" class="stars">
+          *
+        </div>
+      </div>
       <div id="billboard" style={{ fontSize: `${fontSize}px` }}>
         {message}
       </div>
