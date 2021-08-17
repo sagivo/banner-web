@@ -244,6 +244,8 @@ body {
 
 .shooting-star::before {
   content: "";
+  position: absolute;
+  /* display: block; */
   width: 100px;
   right: 1px;
   height: 1px;
@@ -256,40 +258,41 @@ body {
 
 .shooting-star:nth-of-type(1) {
   top: 25%;
-  animation: shoot1 10s ease-in infinite;
+  animation: shoot1 20s ease-in 7s infinite;
   transform: rotate(5deg);
 }
 .shooting-star:nth-of-type(2) {
   top: 50%;
-  animation: shoot2 13s ease-in infinite;
+  animation: shoot2 12s ease-in 10s infinite;
   transform: rotate(4deg);
 }
 
 @keyframes shoot1 {
   0% {
+    top: 0;
     left: 40%;
   }
-  5% {
+  10% {
     left: 100%;
     top: 100%;
   }
-  5.1% {
-    left: 0;
-    top: 0;
+  10.1% {
+    top: 200%;
+    left: 200%;
   }
 }
 
 @keyframes shoot2 {
   0% {
-    left: 0;
     top: 10%;
-  }
-  10% {
-    left: 100%;
-    top: 30%;
-  }
-  10.1% {
     left: 0;
-    top: 10%;
+  }
+  12% {
+    top: 80%;
+    left: 80%;
+  }
+  12.1% {
+    top: 200%;
+    left: 200%;
   }
 }

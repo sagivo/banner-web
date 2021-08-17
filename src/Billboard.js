@@ -29,8 +29,8 @@ function Billboard() {
   return (
     <div id="container">
       <div id="sky">
-        <div class="stars shooting-star"></div>
-        <div class="stars shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
         <div id="star1" class="stars">
           *
         </div>
