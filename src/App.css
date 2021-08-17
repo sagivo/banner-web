@@ -1,4 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Exo+2");
+@import url("https://fonts.googleapis.com/css?family=Ubuntu");
+
+h1 {
+  font-size: 30px;
+}
 
 :root {
   --neon-text-color: #f40;
@@ -10,6 +15,7 @@
 body {
   background-color: black;
   color: white;
+  font-family: "Ubuntu";
 }
 
 #billboard {
@@ -257,14 +263,12 @@ body {
 }
 
 .shooting-star:nth-of-type(1) {
-  top: 25%;
-  animation: shoot1 20s ease-in 7s infinite;
-  transform: rotate(5deg);
+  animation: shoot1 5s ease-in 10s infinite;
+  transform: rotate(10deg);
 }
 .shooting-star:nth-of-type(2) {
-  top: 50%;
-  animation: shoot2 12s ease-in 10s infinite;
-  transform: rotate(4deg);
+  animation: shoot2 12s linear infinite;
+  transform: rotate(172deg);
 }
 
 @keyframes shoot1 {
@@ -277,22 +281,49 @@ body {
     top: 100%;
   }
   10.1% {
-    top: 200%;
-    left: 200%;
+    top: 0%;
+    left: -200px;
+  }
+  100% {
+    top: 0%;
+    left: -200px;
   }
 }
 
 @keyframes shoot2 {
   0% {
-    top: 10%;
-    left: 0;
+    top: 0%;
+    left: 90%;
   }
   12% {
     top: 80%;
-    left: 80%;
+    left: 0%;
   }
   12.1% {
-    top: 200%;
-    left: 200%;
+    top: 0%;
+    left: -200px;
   }
+  100% {
+    top: 0%;
+    left: -200px;
+  }
+}
+
+/* ------------------ AUTH ------------------ */
+#account {
+  font-size: 14px;
+  float: right;
+  /* margin: -50px 20px 0 0; */
+}
+
+#account span {
+  /* border: 1px solid white; */
+  border-radius: 10px;
+  padding: 5px;
+  box-shadow: white 1px 1px 1px;
+}
+
+#account span:nth-of-type(1) {
+  display: none;
+  margin-right: 10px;
 }

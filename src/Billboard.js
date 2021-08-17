@@ -1,18 +1,10 @@
-import React, { useEffect, useState } from "react";
-import fitty from "fitty";
+import React, { useEffect, useState, useCallback } from "react";
 
 function Billboard() {
   const [message] = useState("So I just want to say Hello! So I just");
   const [fontSize, setFontSize] = useState(12);
 
-  useEffect(() => {
-    // fitty("#billboard");
-    loadFont();
-    console.log(window.innerWidth);
-  }, []);
-
-  function loadFont() {
-    console.log(message.length);
+  const loadFont = useCallback(() => {
     if (message.length > 800) setFontSize(16);
     else if (message.length > 500) setFontSize(20);
     else if (message.length > 250) setFontSize(30);
@@ -24,32 +16,36 @@ function Billboard() {
     else if (message.length > 6) setFontSize(100);
     else if (message.length > 3) setFontSize(130);
     else setFontSize(200);
-  }
+  });
+
+  useEffect(() => {
+    loadFont();
+  }, [loadFont]);
 
   return (
     <div id="container">
       <div id="sky">
-        <div class="shooting-star"></div>
-        <div class="shooting-star"></div>
-        <div id="star1" class="stars">
+        <div className="shooting-star"></div>
+        <div className="shooting-star"></div>
+        <div id="star1" className="stars">
           *
         </div>
-        <div id="star2" class="stars">
+        <div id="star2" className="stars">
           *
         </div>
-        <div id="star3" class="stars">
+        <div id="star3" className="stars">
           *
         </div>
-        <div id="star4" class="stars">
+        <div id="star4" className="stars">
           *
         </div>
-        <div id="star5" class="stars">
+        <div id="star5" className="stars">
           *
         </div>
-        <div id="star6" class="stars">
+        <div id="star6" className="stars">
           *
         </div>
-        <div id="star7" class="stars">
+        <div id="star7" className="stars">
           *
         </div>
       </div>
@@ -58,8 +54,8 @@ function Billboard() {
       </div>
 
       <div id="lights">
-        <div class="light"></div>
-        <div class="light light1"></div>
+        <div className="light"></div>
+        <div className="light light1"></div>
       </div>
 
       <div id="pole"></div>

@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { getPrice, getMessage } from "./utils/blockAccess";
+import { ethers } from "ethers";
 
-export function Foo() {
-  const [message, setMessage] = useState();
-  const [price, setPrice] = useState();
+export default function Auth(props) {
   const [hasMetamask, setHasMetamask] = useState(false);
+  const [balance, setBalance] = useState(0);
   const [account, setAccount] = useState(localStorage.getItem("account"));
 
   const disconnect = useCallback(() => {
@@ -21,8 +20,14 @@ export function Foo() {
         method: "eth_requestAccounts",
       });
       if (accounts[0]) {
-        setAccount(accounts[0]);
-        localStorage.setItem("account", accounts[0]);
+        const acnt = ethers.utils.getAddress(accounts[0]);
+        setAccount(acnt);
+        localStorage.setItem("account", acnt);
+
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const balanceBN = await provider.getBalance(acnt);
+        setBalance(balanceDisplay(balanceBN));
       } else disconnect();
     } catch (error) {
       console.error("getAccount ERROR", error);
@@ -31,7 +36,6 @@ export function Foo() {
   }, [disconnect]);
 
   useEffect(() => {
-    console.log("useEffect");
     const { ethereum } = window;
     setHasMetamask(ethereum && ethereum.isMetaMask);
 
@@ -49,21 +53,30 @@ export function Foo() {
         console.log("chainChanged", chainId);
         window.location.reload();
       });
+      // update9
+      if (account) connectUser();
     } else {
       //no metamask
     }
-
-    fetchBlockData();
   }, [hasMetamask, connectUser, disconnect]);
 
-  async function fetchBlockData() {
-    setMessage(await getMessage());
-    setPrice(await getPrice());
+  function accountDisplay() {
+    return `${account.substring(0, 4)}..${account.substring(38)}`;
+  }
+
+  function balanceDisplay(balanceBN) {
+    return (
+      Math.round(
+        parseFloat(ethers.utils.formatEther(balanceBN.toString())) * 100
+      ) / 100
+    );
   }
 
   const hasMeta = () => {
     return !!account ? (
-      <div>{account}</div>
+      <div>
+        <span>{balance} ETH</span> <span>{accountDisplay()}</span>
+      </div>
     ) : (
       <div>
         <button onClick={() => connectUser()}>Connect</button>
@@ -75,12 +88,5 @@ export function Foo() {
     return <div>No</div>;
   };
 
-  // Similar to componentDidMount and componentDidUpdate:  useEffect(() => {    // Update the document title using the browser API    document.title = `You clicked ${count} times`;  });
-  return (
-    <div>
-      <div>Message: {message}</div>
-      <div>Price: Ξ{price}</div>
-      {hasMetamask ? hasMeta() : noMeta()}
-    </div>
-  );
+  return <div id="account">{hasMetamask ? hasMeta() : noMeta()}</div>;
 }
