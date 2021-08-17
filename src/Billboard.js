@@ -54,8 +54,8 @@ function Billboard() {
       </div>
 
       <div id="lights">
-        <div className="light"></div>
-        <div className="light light1"></div>
+        <div id="light1" className="light"></div>
+        <div id="light2" className="light"></div>
       </div>
 
       <div id="pole"></div>
