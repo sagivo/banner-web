@@ -20,18 +20,26 @@ export default function Buy(props) {
   return props.price ? (
     <div id="buy">
       <form onSubmit={mySubmitHandler}>
-        <div>
+        <div className="grow-wrap">
           <textarea
             id="newMessage"
-            placeholder="your message"
+            rows="1"
+            placeholder="Your message..."
             value={message}
             onChange={(e) => setmMessage(e.target.value)}
             maxLength="1000"
             required
-          />
+            name="message"
+            onInput={(e) =>
+              (e.target.parentNode.dataset.replicatedValue = e.target.value)
+            }
+          ></textarea>
         </div>
         <div>
-          <input type="submit" value="POST" />
+          <input id="submit" type="submit" value="POST" />
+        </div>
+        <div>
+          or <a href="">set custom price</a>.
         </div>
         <div>
           <input
