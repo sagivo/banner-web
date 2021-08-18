@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 
-function Billboard() {
+function Billboard(props) {
   const [message] = useState("So I just want to say Hello! So I just");
   const [fontSize, setFontSize] = useState(12);
 
@@ -21,6 +21,13 @@ function Billboard() {
   useEffect(() => {
     loadFont();
   }, [loadFont]);
+
+  function publisherDisplay() {
+    if (props.publisher)
+      return `${props.publisher.substring(0, 6)}..${props.publisher.substring(
+        38
+      )}`;
+  }
 
   return (
     <div id="container">
@@ -59,6 +66,14 @@ function Billboard() {
       </div>
 
       <div id="pole"></div>
+      <div id="base">
+        <a
+          href={"https://etherscan.io/address/" + props.publisher}
+          target="_blank"
+        >
+          {publisherDisplay()}
+        </a>
+      </div>
       <div id="road"></div>
     </div>
   );

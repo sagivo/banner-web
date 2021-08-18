@@ -19,3 +19,7 @@ export async function getPrice() {
   const price = await readContract.getPrice();
   return ethers.utils.formatEther(price);
 }
+
+export async function getPublisher() {
+  return await readContract.getPublisher();
+}

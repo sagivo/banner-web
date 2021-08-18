@@ -61,7 +61,7 @@ export default function Auth(props) {
   }, [hasMetamask, connectUser, disconnect]);
 
   function accountDisplay() {
-    return `${account.substring(0, 4)}..${account.substring(38)}`;
+    return `${account.substring(0, 6)}..${account.substring(38)}`;
   }
 
   function balanceDisplay(balanceBN) {
