@@ -3,25 +3,33 @@ import { ethers } from "ethers";
 
 export default function Buy(props) {
   const [message, setmMessage] = useState();
-  useEffect(() => {}, []);
+  const [newPrice, setNewPrice] = useState();
+  const [showAdvance, setShowAdvance] = useState(true);
+  const STEP = 0.01;
 
-  function getMinPrice() {
-    const num = ethers.utils.parseEther(props.price);
-    const minAdd = ethers.utils.parseEther("0.01");
-    const newMinPrice = ethers.utils.formatEther(num.add(minAdd));
-
-    return Math.round(parseFloat(newMinPrice) * 100) / 100;
-  }
+  useEffect(() => {
+    if (props.price) {
+      const suggested = props.price + STEP;
+      setNewPrice(Math.round(suggested * 100) / 100);
+    }
+  }, [props.price]);
 
   const mySubmitHandler = (event) => {
     event.preventDefault();
   };
 
-  return props.price ? (
+  const checkValue = (e) => {
+    const newVal = parseFloat(e.target.value);
+    if (isNaN(newVal) || newVal <= props.price) return;
+    setNewPrice(newVal);
+  };
+
+  return props.price === 0 || !!props.price ? (
     <div id="buy">
       <form onSubmit={mySubmitHandler}>
         <div className="grow-wrap">
           <textarea
+            data-gramm_editor="false"
             id="newMessage"
             rows="1"
             placeholder="Your message..."
@@ -35,19 +43,28 @@ export default function Buy(props) {
             }
           ></textarea>
         </div>
+        {showAdvance && (
+          <div>
+            Set custom price:
+            <input
+              type="number"
+              step={STEP}
+              min={props.price + STEP}
+              defaultValue={newPrice}
+              onChange={checkValue}
+            ></input>
+            <div id="tip">
+              The message will stay unless someone pays more than your price.
+            </div>
+          </div>
+        )}
         <div>
-          <input id="submit" type="submit" value="POST" />
+          <input id="submit" type="submit" value={`Publish for Ξ${newPrice}`} />
         </div>
         <div>
-          or <a href="">set custom price</a>.
-        </div>
-        <div>
-          <input
-            type="number"
-            step="0.1"
-            min={getMinPrice()}
-            defaultValue={getMinPrice()}
-          ></input>
+          <a onClick={() => setShowAdvance(!showAdvance)}>
+            {showAdvance ? "basic" : "advance"}
+          </a>
         </div>
       </form>
     </div>

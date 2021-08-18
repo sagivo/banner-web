@@ -17,7 +17,13 @@ export async function getMessage() {
 
 export async function getPrice() {
   const price = await readContract.getPrice();
-  return ethers.utils.formatEther(price);
+  const num = ethers.utils.formatEther(price.toString());
+  return roundUp(num, 2);
+}
+
+function roundUp(num, precision) {
+  precision = Math.pow(10, precision);
+  return Math.ceil(num * precision) / precision;
 }
 
 export async function getPublisher() {

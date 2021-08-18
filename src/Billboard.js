@@ -66,6 +66,13 @@ function Billboard(props) {
       </div>
 
       <div id="pole"></div>
+
+      <div id="base-price">
+        <div className="price-pole"></div>
+        <div>Ξ{props.price}</div>
+        <div className="price-pole"></div>
+      </div>
+
       <div id="base">
         <a
           href={"https://etherscan.io/address/" + props.publisher}

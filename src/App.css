@@ -8,7 +8,8 @@ h1 {
 a {
   color: white;
   font-weight: bold;
-  /* text-decoration: none; */
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 input[type="submit"] {
@@ -17,6 +18,8 @@ input[type="submit"] {
   border-radius: 30px;
   padding: 10px;
   cursor: pointer;
+  font-weight: bold;
+
   /* box-shadow: 0 0 10px #719ece; */
 }
 
@@ -91,7 +94,7 @@ body {
   width: var(--billboard-width);
   max-width: var(--billboard-max-width);
 
-  background-color: gray;
+  background-color: rgb(133, 133, 133);
   height: 2px;
 }
 
@@ -189,25 +192,47 @@ body {
 #pole {
   width: 30px;
   height: 220px;
-  background-color: rgb(96, 146, 146);
+  background-color: rgb(133, 133, 133);
   margin: -60px auto 0 auto;
+  z-index: 1;
 }
 
 #base {
   min-width: 120px;
   width: 30%;
   height: 40px;
-  background-color: gray;
+  background-color: rgb(54, 54, 54);
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+#base-price {
+  margin: -130px auto 90px auto;
+  width: 120px;
+  /* width: 30%; */
+  color: black;
+  font-weight: bold;
+  height: 40px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+.price-pole {
+  width: 2px;
+  height: 30px;
+  background-color: rgb(133, 133, 133);
+  margin-top: -70px;
+}
+
 #road {
   width: 100%;
   height: 5px;
-  background-color: gray;
+  background-color: rgb(133, 133, 133);
 }
 
 /* --------- SKY---------- */
@@ -379,6 +404,10 @@ body {
 }
 
 /* ------------------ FORM ------------------ */
+#buy {
+  text-align: center;
+}
+
 #buy div {
   margin-top: 10px;
 }
@@ -391,7 +420,7 @@ body {
   /* justify-content: center; */
 }
 
-#buy form input,
+#buy form input[type="submit"],
 #buy form textarea {
   width: 100%;
 }
@@ -403,12 +432,18 @@ textarea {
   color: white;
 
   border: 2px solid white;
-  font-size: 40px;
+  text-align: center;
+}
+
+#buy form input[type="number"] {
+  width: 80px;
+  margin-left: 10px;
   text-align: center;
 }
 
 .grow-wrap {
   display: grid;
+  font-size: 30px;
 }
 .grow-wrap::after {
   content: attr(data-replicated-value) " ";
@@ -424,4 +459,8 @@ textarea {
   padding: 20px 0;
   font: inherit;
   grid-area: 1 / 1 / 2 / 2;
+}
+
+#tip {
+  font-size: 12px;
 }

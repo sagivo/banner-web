@@ -22,12 +22,9 @@ function App() {
     <div className="App">
       <h1>CRYPTO BILLBOARD</h1>
       <div id="tagling">Your message to the world</div>
-      <Auth message={message} price={price} />
-      <Billboard publisher={publisher} />
+      <Auth message={message} />
+      <Billboard publisher={publisher} price={price} />
       <Buy price={price} />
-      <div id="actions">
-        By 0x9a6D..3Fa1 Ξ{price} | {publisher}
-      </div>
 
       <h2>About</h2>
     </div>
