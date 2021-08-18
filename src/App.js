@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Auth from "./Auth";
 import Billboard from "./Billboard";
+import Buy from "./Buy";
 import { getPrice, getMessage, getPublisher } from "./utils/blockAccess";
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
       <div id="tagling">Your message to the world</div>
       <Auth message={message} price={price} />
       <Billboard publisher={publisher} />
-
+      <Buy price={price} />
       <div id="actions">
         By 0x9a6D..3Fa1 Ξ{price} | {publisher}
       </div>

@@ -300,11 +300,11 @@ body {
 }
 
 .shooting-star:nth-of-type(1) {
-  animation: shoot1 5s ease-in 10s infinite;
+  animation: shoot1 2s ease-in infinite;
   transform: rotate(10deg);
 }
 .shooting-star:nth-of-type(2) {
-  animation: shoot2 12s linear infinite;
+  animation: shoot2 2s linear infinite;
   transform: rotate(172deg);
 }
 
@@ -329,8 +329,8 @@ body {
 
 @keyframes shoot2 {
   0% {
-    top: 0%;
-    left: 90%;
+    top: 10%;
+    left: 70%;
   }
   12% {
     top: 80%;
@@ -363,4 +363,23 @@ body {
 #account span:nth-of-type(1) {
   display: none;
   margin-right: 10px;
+}
+
+/* ------------------ FORM ------------------ */
+#buy form {
+  width: 80%;
+  margin: auto;
+  /* display: flex; */
+  /* justify-content: center; */
+}
+
+#buy form input,
+#buy form textarea {
+  width: 100%;
+}
+
+textarea {
+  resize: none;
+  outline: none !important;
+  box-shadow: 0 0 10px #719ece;
 }
