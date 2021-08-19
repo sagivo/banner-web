@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { ethers } from "ethers";
+import { publishMessege } from "./utils/blockAccess";
 
 export default function Buy(props) {
   const [message, setmMessage] = useState();
@@ -14,8 +15,11 @@ export default function Buy(props) {
     }
   }, [props.price]);
 
-  const mySubmitHandler = (event) => {
+  const submit = (event) => {
     event.preventDefault();
+    if (props.signer) {
+      publishMessege(props.signer, message, ethers.utils.parseEther(newPrice));
+    }
   };
 
   const checkValue = (e) => {
@@ -26,7 +30,7 @@ export default function Buy(props) {
 
   return props.price === 0 || !!props.price ? (
     <div id="buy">
-      <form onSubmit={mySubmitHandler}>
+      <form onSubmit={submit}>
         <div id="custom-button">
           <a onClick={() => setShowAdvance(!showAdvance)}>
             {showAdvance ? "basic" : "advance"}

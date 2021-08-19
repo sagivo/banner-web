@@ -1,26 +1,23 @@
 import React, { useEffect, useState, useCallback } from "react";
 
 function Billboard(props) {
-  const [message] = useState("So I just want to say Hello! So I just");
+  // const [message] = useState("So I just want to say Hello! So I just");
   const [fontSize, setFontSize] = useState(12);
 
-  const loadFont = useCallback(() => {
-    if (message.length > 800) setFontSize(16);
-    else if (message.length > 500) setFontSize(20);
-    else if (message.length > 250) setFontSize(30);
-    else if (message.length > 190) setFontSize(34);
-    else if (message.length > 100) setFontSize(40);
-    else if (message.length > 50) setFontSize(50);
-    else if (message.length > 20) setFontSize(55);
-    else if (message.length > 10) setFontSize(60);
-    else if (message.length > 6) setFontSize(100);
-    else if (message.length > 3) setFontSize(130);
-    else setFontSize(200);
-  });
-
   useEffect(() => {
-    loadFont();
-  }, [loadFont]);
+    const len = props.message ? props.message.length : 1000;
+    if (len > 800) setFontSize(16);
+    else if (len > 500) setFontSize(20);
+    else if (len > 250) setFontSize(30);
+    else if (len > 190) setFontSize(34);
+    else if (len > 100) setFontSize(40);
+    else if (len > 50) setFontSize(50);
+    else if (len > 20) setFontSize(55);
+    else if (len > 10) setFontSize(60);
+    else if (len > 6) setFontSize(100);
+    else if (len > 3) setFontSize(130);
+    else setFontSize(200);
+  }, [props.message]);
 
   function publisherDisplay() {
     if (props.publisher)
@@ -57,7 +54,7 @@ function Billboard(props) {
         </div>
       </div>
       <div id="billboard" style={{ fontSize: `${fontSize}px` }}>
-        {message}
+        {props.message}
       </div>
 
       <div id="lights">

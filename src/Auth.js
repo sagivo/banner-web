@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { ethers } from "ethers";
-import mataImg from "./images/metamask.png";
 
 export default function Auth(props) {
   const [hasMetamask, setHasMetamask] = useState(false);
@@ -28,6 +27,7 @@ export default function Auth(props) {
 
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
+        props.setSigner(signer);
         const balanceBN = await provider.getBalance(acnt);
       } else disconnect();
     } catch (error) {

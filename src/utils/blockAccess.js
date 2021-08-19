@@ -3,7 +3,7 @@ import abi from "./abi";
 
 const provider = new ethers.providers.InfuraProvider(
   "rinkeby",
-  "5ac032ada81f40b3808b1c90bacc95ba"
+  process.env.REACT_APP_INFURA_ENDPOINT
 );
 const readContract = new ethers.Contract(
   process.env.REACT_APP_CONTRACT_ADDRESS,
@@ -12,7 +12,9 @@ const readContract = new ethers.Contract(
 );
 
 export async function getMessage() {
-  return await readContract.getMessage();
+  const message = await readContract.getMessage();
+  console.log("message", message);
+  return message;
 }
 
 export async function getPrice() {
@@ -28,4 +30,8 @@ function roundUp(num, precision) {
 
 export async function getPublisher() {
   return await readContract.getPublisher();
+}
+
+export async function publishMessege(signer, messege, value) {
+  return await readContract.connect(signer).setMessage(messege, { value });
 }
