@@ -3,7 +3,12 @@ import "./App.css";
 import Auth from "./Auth";
 import Billboard from "./Billboard";
 import Buy from "./Buy";
-import { getPrice, getMessage, getPublisher } from "./utils/blockAccess";
+import {
+  getPrice,
+  getMessage,
+  getPublisher,
+  subsrubeToNewMessage,
+} from "./utils/blockAccess";
 
 function App() {
   const [message, setMessage] = useState();
@@ -11,12 +16,19 @@ function App() {
   const [publisher, setPublisher] = useState();
   const [signer, setSigner] = useState();
   const [connected, setConnected] = useState(false);
+  const [txDone, setTxDone] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
       setMessage(await getMessage());
       setPrice(await getPrice());
       setPublisher(await getPublisher());
+      subsrubeToNewMessage((msg, pub, pri) => {
+        setMessage(msg);
+        setPrice(pri);
+        setPublisher(pub);
+        setTxDone(true);
+      });
     }
     fetchData();
   }, []);
@@ -31,14 +43,30 @@ function App() {
         setConnected={setConnected}
         setSigner={setSigner}
       />
-      {connected && <Buy price={price} signer={signer} />}
-      <h2>About</h2>
-      <div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ultrices sagittis
-        orci a scelerisque purus. Aenean vel elit scelerisque mauris
-        pellentesque. Cursus mattis molestie a iaculis. Dis parturient montes
-        nascetur ridiculus. Euismod nisi porta lorem mollis aliquam. Ultrices
+      {txDone && <div>Transaction is complete 🎉</div>}
+      {connected && !txDone && <Buy price={price} signer={signer} />}
+      <h3>About</h3>
+      <div id="info">
+        Welcome to a decentralized social experiment 👋 <br />
+        The billboard above exists on the Etherume blockchain. The message is
+        censorship resistent and avaialble to everyone.
+        <br />
+        <br />
+        The billboard also shows the owner and price paid for the message to be
+        published.
+        <br />
+        In order to replace this message with your own message, you will need to
+        pay any ETH amount greather the previous price paid.
+        <br />
+        <br />
+        Your message will stay forever on the blockchain unless someone agrees
+        to pay more to publish their message.
+        <br />
+        Publishing a message also provides the publisher with a unique BLBD NFT
+        🦄.
+        <br />
+        <br />
+        Got something to tell the world? Publish it now!
       </div>
       <hr />
       Footer

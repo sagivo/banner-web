@@ -12,9 +12,7 @@ const readContract = new ethers.Contract(
 );
 
 export async function getMessage() {
-  const message = await readContract.getMessage();
-  console.log("message", message);
-  return message;
+  return await readContract.getMessage();
 }
 
 export async function getPrice() {
@@ -43,4 +41,11 @@ export async function publishMessege(signer, messege, value) {
     console.log(error);
     return null;
   }
+}
+
+export function subsrubeToNewMessage(cb) {
+  readContract.on("NewMessage", (message, publisher, price) => {
+    const num = ethers.utils.formatEther(price.toString());
+    cb(message, publisher, roundUp(num, 2));
+  });
 }

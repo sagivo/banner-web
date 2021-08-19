@@ -6,13 +6,13 @@ export default function Buy(props) {
   const [tx, setTx] = useState();
   const [message, setmMessage] = useState();
   const [newPrice, setNewPrice] = useState();
-  const [showAdvance, setShowAdvance] = useState(false);
+  const [showAdvance, setShowAdvance] = useState(true);
   const STEP = 0.01;
 
   useEffect(() => {
     if (props.price) {
       const suggested = props.price + STEP;
-      setNewPrice(Math.round(suggested * 100) / 100);
+      setNewPrice(round(suggested));
     }
   }, [props.price]);
 
@@ -34,18 +34,24 @@ export default function Buy(props) {
     setNewPrice(newVal);
   };
 
+  function round(num) {
+    return Math.round(num * 100) / 100;
+  }
+
   return props.price === 0 || !!props.price ? (
     <div id="buy">
       {tx ? (
         <div id="transaction">
+          Please wait for{" "}
           <a
             href={`https://etherscan.io/tx/${tx}`}
             target="_blank"
             rel="noreferrer"
             className="external"
           >
-            view transaction
-          </a>
+            transaction
+          </a>{" "}
+          to complete...{" "}
         </div>
       ) : (
         <form onSubmit={submit}>
@@ -60,7 +66,7 @@ export default function Buy(props) {
               data-gramm_editor="false"
               id="newMessage"
               rows="1"
-              placeholder="Your message..."
+              placeholder="Type your message..."
               value={message}
               onChange={(e) => setmMessage(e.target.value)}
               maxLength="1000"
@@ -77,7 +83,7 @@ export default function Buy(props) {
               <input
                 type="number"
                 step={STEP}
-                min={props.price + STEP}
+                min={round(props.price + STEP)}
                 defaultValue={newPrice}
                 onChange={checkValue}
               ></input>

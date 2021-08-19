@@ -464,7 +464,7 @@ textarea {
 }
 .grow-wrap > textarea,
 .grow-wrap::after {
-  padding: 20px 0;
+  padding: 20px 0 40px 0;
   font: inherit;
   grid-area: 1 / 1 / 2 / 2;
   font-family: "Orbitron";
@@ -484,4 +484,10 @@ textarea {
 
 #buy form input[type="submit"] {
   margin-top: 20px;
+}
+
+#info {
+  margin: auto;
+  width: 80%;
+  text-align: left;
 }
