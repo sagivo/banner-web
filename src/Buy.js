@@ -4,7 +4,7 @@ import { ethers } from "ethers";
 export default function Buy(props) {
   const [message, setmMessage] = useState();
   const [newPrice, setNewPrice] = useState();
-  const [showAdvance, setShowAdvance] = useState(true);
+  const [showAdvance, setShowAdvance] = useState(false);
   const STEP = 0.01;
 
   useEffect(() => {

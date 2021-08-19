@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { ethers } from "ethers";
+import mataImg from "./images/metamask.png";
 
 export default function Auth(props) {
   const [hasMetamask, setHasMetamask] = useState(false);
-  const [balance, setBalance] = useState(0);
   const [account, setAccount] = useState(localStorage.getItem("account"));
 
   const disconnect = useCallback(() => {
@@ -27,7 +27,6 @@ export default function Auth(props) {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
         const balanceBN = await provider.getBalance(acnt);
-        setBalance(balanceDisplay(balanceBN));
       } else disconnect();
     } catch (error) {
       console.error("getAccount ERROR", error);
@@ -64,19 +63,9 @@ export default function Auth(props) {
     return `${account.substring(0, 6)}..${account.substring(38)}`;
   }
 
-  function balanceDisplay(balanceBN) {
-    return (
-      Math.round(
-        parseFloat(ethers.utils.formatEther(balanceBN.toString())) * 100
-      ) / 100
-    );
-  }
-
   const hasMeta = () => {
     return !!account ? (
-      <div>
-        <span>{balance} ETH</span> <span>{accountDisplay()}</span>
-      </div>
+      <div>Connected {accountDisplay()}</div>
     ) : (
       <div>
         <button onClick={() => connectUser()}>Connect</button>
@@ -85,7 +74,15 @@ export default function Auth(props) {
   };
 
   const noMeta = () => {
-    return <div>No</div>;
+    return (
+      <div>
+        {/* <img src={mataImg} /> */}
+        <a href="https://metamask.io/" target="_blank" className="external">
+          Install MetaMask
+        </a>{" "}
+        to join.
+      </div>
+    );
   };
 
   return <div id="account">{hasMetamask ? hasMeta() : noMeta()}</div>;

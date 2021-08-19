@@ -21,12 +21,19 @@ function App() {
   return (
     <div className="App">
       <h1>CRYPTO BILLBOARD</h1>
-      <div id="tagling">Your message to the world</div>
-      <Auth message={message} />
+      <div id="tagline">Your message to the world</div>
       <Billboard publisher={publisher} price={price} />
+      <Auth message={message} />
       <Buy price={price} />
 
       <h2>About</h2>
+      <div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ultrices sagittis
+        orci a scelerisque purus. Aenean vel elit scelerisque mauris
+        pellentesque. Cursus mattis molestie a iaculis. Dis parturient montes
+        nascetur ridiculus. Euismod nisi porta lorem mollis aliquam. Ultrices
+      </div>
     </div>
   );
 }
