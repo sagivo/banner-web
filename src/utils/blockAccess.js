@@ -33,5 +33,14 @@ export async function getPublisher() {
 }
 
 export async function publishMessege(signer, messege, value) {
-  return await readContract.connect(signer).setMessage(messege, { value });
+  try {
+    const response = await readContract
+      .connect(signer)
+      .setMessage(messege, { value });
+    console.log(response);
+    return response.hash;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
 }

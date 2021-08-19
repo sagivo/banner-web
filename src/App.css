@@ -412,22 +412,19 @@ h1 {
   text-align: center;
 }
 
+#transaction {
+  margin-top: 20px;
+}
+
 #custom-button {
-  /* float: right; */
   margin-top: -24px;
   float: right;
 }
-
-/* #buy form div {
-  margin-top: 10px;
-} */
 
 #buy form {
   width: 80%;
   margin: auto;
   text-align: center;
-  /* display: flex; */
-  /* justify-content: center; */
 }
 
 #buy form input[type="submit"],
@@ -481,7 +478,7 @@ textarea {
   font-size: var(--sizeSmall);
 }
 
-#buy a {
+#buy form a {
   font-size: var(--sizeSmall);
 }
 
