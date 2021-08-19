@@ -62,12 +62,12 @@ export default function Auth(props) {
   }, [hasMetamask, connectUser, disconnect]);
 
   function accountDisplay() {
-    return `${account.substring(0, 6)}..${account.substring(38)}`;
+    return `${account.substring(0, 6)}...${account.substring(38)}`;
   }
 
   const hasMeta = () => {
     return !!account ? (
-      <div>Connected {accountDisplay()}</div>
+      <div>Connected as {accountDisplay()}</div>
     ) : (
       <div>
         <button onClick={() => connectUser()}>CONNECT WALLET</button>

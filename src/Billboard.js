@@ -69,7 +69,7 @@ function Billboard(props) {
 
       <div id="base-price">
         <div className="price-pole"></div>
-        <div>Ξ {props.price}</div>
+        <div>PAID Ξ{props.price}</div>
         <div className="price-pole"></div>
       </div>
 

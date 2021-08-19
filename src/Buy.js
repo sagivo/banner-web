@@ -27,6 +27,12 @@ export default function Buy(props) {
   return props.price === 0 || !!props.price ? (
     <div id="buy">
       <form onSubmit={mySubmitHandler}>
+        <div id="custom-button">
+          <a onClick={() => setShowAdvance(!showAdvance)}>
+            {showAdvance ? "basic" : "advance"}
+          </a>
+        </div>
+        <div className="clear"></div>
         <div className="grow-wrap">
           <textarea
             data-gramm_editor="false"
@@ -44,7 +50,7 @@ export default function Buy(props) {
           ></textarea>
         </div>
         {showAdvance && (
-          <div>
+          <div id="advance-setttings">
             Set custom price:
             <input
               type="number"
@@ -56,17 +62,12 @@ export default function Buy(props) {
             <div id="tip">
               Price has to be greater than Ξ{props.price}.
               <br />
-              Message stays until someone pays more than Ξ{newPrice}.
+              Message stays until someone pays more than you.
             </div>
           </div>
         )}
         <div>
           <input id="submit" type="submit" value={`Publish for Ξ${newPrice}`} />
-        </div>
-        <div>
-          <a onClick={() => setShowAdvance(!showAdvance)}>
-            {showAdvance ? "basic" : "advance"}
-          </a>
         </div>
       </form>
     </div>
