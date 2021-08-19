@@ -76,11 +76,11 @@ h1 {
   display: flex;
   width: var(--billboard-width);
   max-width: var(--billboard-max-width);
-  text-align: center;
   background-color: black;
   color: white;
 
   align-items: center;
+  justify-content: center;
 
   box-shadow: 0 0 5rem #fff, 0 0 0.2rem #fff, 0 0 2rem #bc13fe,
     0 0 0.8rem #bc13fe, 0 0 2.8rem #bc13fe, inset 0 0 1.3rem #bc13fe;
