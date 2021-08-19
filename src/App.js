@@ -12,10 +12,13 @@ function App() {
   const [signer, setSigner] = useState();
   const [connected, setConnected] = useState(false);
 
-  useEffect(async () => {
-    setMessage(await getMessage());
-    setPrice(await getPrice());
-    setPublisher(await getPublisher());
+  useEffect(() => {
+    async function fetchData() {
+      setMessage(await getMessage());
+      setPrice(await getPrice());
+      setPublisher(await getPublisher());
+    }
+    fetchData();
   }, []);
 
   return (

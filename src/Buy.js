@@ -1,11 +1,9 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import { publishMessege } from "./utils/blockAccess";
 
 export default function Buy(props) {
-  const [tx, setTx] = useState(
-    "0xbaf4a026ae9d4d497f1d5f183897c5b92b37e7e60c130f6b0569426f0b3c1eb2"
-  );
+  const [tx, setTx] = useState();
   const [message, setmMessage] = useState();
   const [newPrice, setNewPrice] = useState();
   const [showAdvance, setShowAdvance] = useState(false);
@@ -21,7 +19,7 @@ export default function Buy(props) {
   const submit = async (e) => {
     e.preventDefault();
     if (props.signer) {
-      const res = publishMessege(
+      const res = await publishMessege(
         props.signer,
         message,
         ethers.utils.parseEther(newPrice.toString()).toString()
@@ -43,6 +41,7 @@ export default function Buy(props) {
           <a
             href={`https://etherscan.io/tx/${tx}`}
             target="_blank"
+            rel="noreferrer"
             className="external"
           >
             view transaction
@@ -51,7 +50,7 @@ export default function Buy(props) {
       ) : (
         <form onSubmit={submit}>
           <div id="custom-button">
-            <a onClick={() => setShowAdvance(!showAdvance)}>
+            <a href="#buy" onClick={() => setShowAdvance(!showAdvance)}>
               {showAdvance ? "basic" : "advance"}
             </a>
           </div>

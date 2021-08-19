@@ -5,11 +5,13 @@ export default function Auth(props) {
   const [hasMetamask, setHasMetamask] = useState(false);
   const [account, setAccount] = useState(localStorage.getItem("account"));
 
+  const { setConnected, setSigner } = props;
+
   const disconnect = useCallback(() => {
     setAccount(null);
-    props.setConnected(false);
+    setConnected(false);
     localStorage.removeItem("account");
-  }, []);
+  }, [setConnected]);
 
   const connectUser = useCallback(async () => {
     console.log("connectUser");
@@ -22,19 +24,18 @@ export default function Auth(props) {
       if (accounts[0]) {
         const acnt = ethers.utils.getAddress(accounts[0]);
         setAccount(acnt);
-        props.setConnected(true);
+        setConnected(true);
         localStorage.setItem("account", acnt);
 
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
-        props.setSigner(signer);
-        const balanceBN = await provider.getBalance(acnt);
+        setSigner(signer);
       } else disconnect();
     } catch (error) {
       console.error("getAccount ERROR", error);
       disconnect();
     }
-  }, [disconnect]);
+  }, [disconnect, setConnected, setSigner]);
 
   useEffect(() => {
     const { ethereum } = window;
@@ -59,7 +60,7 @@ export default function Auth(props) {
     } else {
       //no metamask
     }
-  }, [hasMetamask, connectUser, disconnect]);
+  }, [hasMetamask, connectUser, disconnect, account]);
 
   function accountDisplay() {
     return `${account.substring(0, 6)}...${account.substring(38)}`;
@@ -79,7 +80,12 @@ export default function Auth(props) {
     return (
       <div>
         {/* <img src={mataImg} /> */}
-        <a href="https://metamask.io/" target="_blank" className="external">
+        <a
+          href="https://metamask.io/"
+          target="_blank"
+          rel="noreferrer"
+          className="external"
+        >
           Install MetaMask
         </a>{" "}
         to join.

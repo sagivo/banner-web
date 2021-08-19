@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 
 function Billboard(props) {
   // const [message] = useState("So I just want to say Hello! So I just");
@@ -74,6 +74,7 @@ function Billboard(props) {
         <a
           href={"https://etherscan.io/address/" + props.publisher}
           target="_blank"
+          rel="noreferrer"
           className="external"
         >
           {publisherDisplay()}
