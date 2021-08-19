@@ -69,7 +69,7 @@ function Billboard(props) {
 
       <div id="base-price">
         <div className="price-pole"></div>
-        <div>Ξ{props.price}</div>
+        <div>Ξ {props.price}</div>
         <div className="price-pole"></div>
       </div>
 
@@ -77,6 +77,7 @@ function Billboard(props) {
         <a
           href={"https://etherscan.io/address/" + props.publisher}
           target="_blank"
+          className="external"
         >
           {publisherDisplay()}
         </a>

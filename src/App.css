@@ -1,18 +1,25 @@
 @import url("https://fonts.googleapis.com/css?family=Ubuntu");
 @import url("https://fonts.googleapis.com/css?family=Orbitron");
 
+:root {
+  --neon-text-color: #f40;
+  --neon-border-color: #08f;
+  --billboard-width: 80%;
+  --billboard-max-width: 800px;
+  --sizeMed: 20px;
+  --sizeSmall: 12px;
+}
+
 body {
   text-align: center;
   background-color: black;
   color: white;
   font-family: "Ubuntu";
+  font-size: var(--sizeMed);
 }
 
-h1 {
-  text-align: center;
-  font-size: 30px;
-  font-family: "Orbitron";
-  margin: 30px;
+input {
+  font-size: var(--sizeMed);
 }
 
 a {
@@ -22,18 +29,18 @@ a {
   cursor: pointer;
 }
 
-input[type="submit"] {
+input[type="submit"],
+button {
   background-color: white;
   color: black;
-  border-radius: 30px;
-  padding: 10px;
+  /* border-radius: 30px; */
+  padding: 20px;
   cursor: pointer;
   font-weight: bold;
-
-  /* box-shadow: 0 0 10px #719ece; */
 }
 
-input[type="submit"]:hover {
+input[type="submit"]:hover,
+button:hover {
   background-color: pink;
 }
 
@@ -42,16 +49,18 @@ input[type="submit"]:hover {
   margin: -14px 3px 0 5px;
 }
 
-:root {
-  --neon-text-color: #f40;
-  --neon-border-color: #08f;
-  --billboard-width: 80%;
-  --billboard-max-width: 800px;
+h1 {
+  text-align: center;
+  font-family: "Orbitron";
+  margin: 30px;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 #tagline {
   margin-top: -30px;
   font-style: italic;
+  font-size: 14px;
 }
 
 #billboard {
@@ -69,7 +78,7 @@ input[type="submit"]:hover {
 
   align-items: center;
 
-  animation: flicker 2s infinite alternate;
+  /* animation: flicker 2s infinite alternate; */
 
   box-shadow: 0 0 5rem #fff, 0 0 0.2rem #fff, 0 0 2rem #bc13fe,
     0 0 0.8rem #bc13fe, 0 0 2.8rem #bc13fe, inset 0 0 1.3rem #bc13fe;
@@ -207,8 +216,8 @@ input[type="submit"]:hover {
 }
 
 #base {
-  min-width: 120px;
-  width: 30%;
+  min-width: 180px;
+  width: 40%;
   height: 40px;
   background-color: rgb(54, 54, 54);
   margin: auto;
@@ -219,12 +228,10 @@ input[type="submit"]:hover {
 
 #base-price {
   margin: -130px auto 90px auto;
-  width: 120px;
-  /* width: 30%; */
-  color: black;
+  width: 180px;
   font-weight: bold;
   height: 40px;
-  background-color: white;
+  background-color: rgb(54, 54, 54);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -347,11 +354,11 @@ input[type="submit"]:hover {
 }
 
 .shooting-star:nth-of-type(1) {
-  animation: shoot1 12s ease-in infinite;
+  animation: shoot1 12s ease-in 10s infinite;
   transform: rotate(10deg);
 }
 .shooting-star:nth-of-type(2) {
-  animation: shoot2 5s linear 10s infinite;
+  animation: shoot2 5s linear infinite;
   transform: rotate(172deg);
 }
 
@@ -397,14 +404,14 @@ input[type="submit"]:hover {
 #account {
   margin-top: 30px;
   text-align: center;
-  font-size: 14px;
+  font-size: var(--sizeSmall);
   /* margin: -50px 20px 0 0; */
 }
 #account img {
   height: 20px;
 }
 
-/* ------------------ FORM ------------------ */
+/* ------------------ BUY ------------------ */
 #buy {
   text-align: center;
 }
@@ -464,5 +471,9 @@ textarea {
 }
 
 #tip {
-  font-size: 12px;
+  font-size: var(--sizeSmall);
+}
+
+#buy a {
+  font-size: var(--sizeSmall);
 }

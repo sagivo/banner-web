@@ -9,6 +9,7 @@ function App() {
   const [message, setMessage] = useState();
   const [price, setPrice] = useState();
   const [publisher, setPublisher] = useState();
+  const [connected, setConnected] = useState(false);
 
   fetchBlockData();
 
@@ -23,8 +24,8 @@ function App() {
       <h1>CRYPTO BILLBOARD</h1>
       <div id="tagline">Your message to the world</div>
       <Billboard publisher={publisher} price={price} />
-      <Auth message={message} />
-      <Buy price={price} />
+      <Auth message={message} setConnected={setConnected} />
+      {connected && <Buy price={price} />}
 
       <h2>About</h2>
       <div>

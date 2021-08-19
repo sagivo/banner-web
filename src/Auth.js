@@ -8,6 +8,7 @@ export default function Auth(props) {
 
   const disconnect = useCallback(() => {
     setAccount(null);
+    props.setConnected(false);
     localStorage.removeItem("account");
   }, []);
 
@@ -22,6 +23,7 @@ export default function Auth(props) {
       if (accounts[0]) {
         const acnt = ethers.utils.getAddress(accounts[0]);
         setAccount(acnt);
+        props.setConnected(true);
         localStorage.setItem("account", acnt);
 
         const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -68,7 +70,7 @@ export default function Auth(props) {
       <div>Connected {accountDisplay()}</div>
     ) : (
       <div>
-        <button onClick={() => connectUser()}>Connect</button>
+        <button onClick={() => connectUser()}>CONNECT WALLET</button>
       </div>
     );
   };

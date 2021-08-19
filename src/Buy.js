@@ -54,7 +54,9 @@ export default function Buy(props) {
               onChange={checkValue}
             ></input>
             <div id="tip">
-              The message will stay unless someone pays more than your price.
+              Price has to be greater than Ξ{props.price}.
+              <br />
+              Message stays until someone pays more than Ξ{newPrice}.
             </div>
           </div>
         )}
