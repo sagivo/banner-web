@@ -5,7 +5,7 @@ export default function Auth(props) {
   const [hasMetamask, setHasMetamask] = useState(false);
   const [account, setAccount] = useState(localStorage.getItem("account"));
 
-  const { setConnected, setSigner, setNetwork } = props;
+  const { setConnected, setSigner, setChain } = props;
 
   const disconnect = useCallback(() => {
     setAccount(null);
@@ -16,11 +16,8 @@ export default function Auth(props) {
   const connectUser = useCallback(async () => {
     console.log("connectUser");
     const supportedChains = {
-      "0x1": "Mainnet",
-      // "0x3": "Ropsten",
-      "0x4": "Rinkeby",
-      // "0x5": "Goerli",
-      // "0x2a": "Kovan",
+      // "0x1": "mainnet",
+      "0x4": "rinkeby",
     };
 
     const { ethereum } = window;
@@ -39,13 +36,13 @@ export default function Auth(props) {
         const signer = provider.getSigner();
         setSigner(signer);
         const chainId = await ethereum.request({ method: "eth_chainId" });
-        setNetwork(supportedChains[chainId] || "UNSOPPERTED NETWORK");
+        setChain(supportedChains[chainId]);
       } else disconnect();
     } catch (error) {
       console.error("getAccount ERROR", error);
       disconnect();
     }
-  }, [disconnect, setConnected, setSigner, setNetwork]);
+  }, [disconnect, setConnected, setSigner, setChain]);
 
   useEffect(() => {
     const { ethereum } = window;

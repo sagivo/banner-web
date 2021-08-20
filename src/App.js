@@ -13,7 +13,7 @@ function App() {
   const [connected, setConnected] = useState(false);
   const [txPending, setTxPending] = useState(false);
   const [txDone, setTxDone] = useState(false);
-  const [network, setNetwork] = useState();
+  const [chain, setChain] = useState();
 
   useEffect(() => {
     async function fetchData() {
@@ -23,31 +23,33 @@ function App() {
         setPublisher(pub);
       };
 
-      const [msg, pri, pub] = await getInfo();
+      const [msg, pri, pub] = await getInfo(chain);
       setVars(msg, pri, pub);
 
-      subsrubeToNewMessage((msg, pri, pub) => {
+      subsrubeToNewMessage(chain, (msg, pri, pub) => {
         setVars(msg, pri, pub);
         if (txPending) setTxDone(true);
       });
     }
-    fetchData();
-  }, [txPending]);
+    if (chain) fetchData(chain);
+  }, [txPending, chain]);
 
   return (
     <div className="App">
       <h1>CRYPTO BILLBOARD</h1>
       <div id="tagline">Your message to the world</div>
       <Billboard message={message} publisher={publisher} price={price} />
-      {network !== "Mainnet" && <div id="network">- {network} -</div>}
+      {chain !== "mainnet" && (
+        <div id="chain">- {chain ? chain : "unsupported network"} -</div>
+      )}
       <Auth
         message={message}
         setConnected={setConnected}
         setSigner={setSigner}
-        setNetwork={setNetwork}
+        setChain={setChain}
       />
       {txDone && <div>Transaction is complete 🎉</div>}
-      {connected && !txDone && network !== "UNSOPPERTED NETWORK" && (
+      {connected && !txDone && chain && (
         <Buy price={price} signer={signer} setTxPending={setTxPending} />
       )}
 
