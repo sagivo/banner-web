@@ -13,7 +13,6 @@ const getContract = (chain) => {
     },
   };
 
-  console.log("chains[chain].infuraName", chains[chain].infuraName);
   const provider = new ethers.providers.InfuraProvider(
     chains[chain].infuraName,
     "5ac032ada81f40b3808b1c90bacc95ba"

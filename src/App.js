@@ -13,7 +13,7 @@ function App() {
   const [connected, setConnected] = useState(false);
   const [txPending, setTxPending] = useState(false);
   const [txDone, setTxDone] = useState(false);
-  const [chain, setChain] = useState();
+  const [chain, setChain] = useState("rinkeby");
 
   useEffect(() => {
     async function fetchData() {
@@ -38,7 +38,9 @@ function App() {
     <div className="App">
       <h1>CRYPTO BILLBOARD</h1>
       <div id="tagline">Your message to the world</div>
-      <Billboard message={message} publisher={publisher} price={price} />
+      {chain && (
+        <Billboard message={message} publisher={publisher} price={price} />
+      )}
       {chain !== "mainnet" && (
         <div id="chain">- {chain ? chain : "unsupported network"} -</div>
       )}
