@@ -2,7 +2,7 @@ import { ethers } from "ethers";
 import abi from "./abi";
 
 const provider = new ethers.providers.InfuraProvider(
-  "rinkeby",
+  process.env.REACT_APP_INFURA_NETWORK,
   process.env.REACT_APP_INFURA_ENDPOINT
 );
 const readContract = new ethers.Contract(

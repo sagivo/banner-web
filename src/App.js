@@ -47,7 +47,7 @@ function App() {
         setNetwork={setNetwork}
       />
       {txDone && <div>Transaction is complete 🎉</div>}
-      {connected && !txDone && (
+      {connected && !txDone && network !== "UNSOPPERTED NETWORK" && (
         <Buy price={price} signer={signer} setTxPending={setTxPending} />
       )}
 
