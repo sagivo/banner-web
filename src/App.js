@@ -11,6 +11,7 @@ function App() {
   const [publisher, setPublisher] = useState();
   const [signer, setSigner] = useState();
   const [connected, setConnected] = useState(false);
+  const [txPending, setTxPending] = useState(false);
   const [txDone, setTxDone] = useState(false);
 
   useEffect(() => {
@@ -26,11 +27,11 @@ function App() {
 
       subsrubeToNewMessage((msg, pri, pub) => {
         setVars(msg, pri, pub);
-        setTxDone(true);
+        if (txPending) setTxDone(true);
       });
     }
     fetchData();
-  }, []);
+  }, [txPending]);
 
   return (
     <div className="App">
@@ -43,7 +44,9 @@ function App() {
         setSigner={setSigner}
       />
       {txDone && <div>Transaction is complete 🎉</div>}
-      {connected && !txDone && <Buy price={price} signer={signer} />}
+      {connected && !txDone && (
+        <Buy price={price} signer={signer} setTxPending={setTxPending} />
+      )}
 
       <div id="info">
         <h3>About</h3>

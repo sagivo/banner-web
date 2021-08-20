@@ -37,6 +37,7 @@ export async function publishMessege(signer, messege, value) {
 
 export function subsrubeToNewMessage(cb) {
   readContract.on("NewMessage", (message, price, publisher) => {
+    console.log("NewMessage", message, price, publisher);
     const num = ethers.utils.formatEther(price.toString());
     cb(message, roundUp(num, 2), publisher);
   });

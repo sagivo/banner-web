@@ -9,12 +9,14 @@ export default function Buy(props) {
   const [showAdvance, setShowAdvance] = useState(false);
   const STEP = 0.01;
 
+  const { setTxPending } = props;
+
   useEffect(() => {
     if (props.price) {
       const suggested = props.price + STEP;
       setNewPrice(round(suggested));
     }
-  }, [props.price]);
+  }, [props.price, setTxPending]);
 
   const submit = async (e) => {
     e.preventDefault();
@@ -24,7 +26,10 @@ export default function Buy(props) {
         message,
         ethers.utils.parseEther(newPrice.toString()).toString()
       );
-      if (res) setTx(res);
+      if (res) {
+        setTx(res);
+        props.setTxPending(true);
+      }
     }
   };
 
@@ -56,7 +61,7 @@ export default function Buy(props) {
       ) : (
         <form onSubmit={submit}>
           <div id="custom-button">
-            <a href="#buy" onClick={() => setShowAdvance(!showAdvance)}>
+            <a href="#account" onClick={() => setShowAdvance(!showAdvance)}>
               {showAdvance ? "basic" : "advance"}
             </a>
           </div>

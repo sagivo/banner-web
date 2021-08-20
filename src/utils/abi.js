@@ -60,15 +60,15 @@ const abi = [
       },
       {
         indexed: false,
-        internalType: "address",
-        name: "publisher",
-        type: "address",
-      },
-      {
-        indexed: false,
         internalType: "uint256",
         name: "price",
         type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "address",
+        name: "publisher",
+        type: "address",
       },
     ],
     name: "NewMessage",
