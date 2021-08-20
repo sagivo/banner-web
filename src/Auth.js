@@ -5,7 +5,7 @@ export default function Auth(props) {
   const [hasMetamask, setHasMetamask] = useState(false);
   const [account, setAccount] = useState(localStorage.getItem("account"));
 
-  const { setConnected, setSigner } = props;
+  const { setConnected, setSigner, setNetwork } = props;
 
   const disconnect = useCallback(() => {
     setAccount(null);
@@ -38,10 +38,23 @@ export default function Auth(props) {
   }, [disconnect, setConnected, setSigner]);
 
   useEffect(() => {
+    const chains = {
+      "0x1": "Mainnet",
+      "0x3": "Ropsten",
+      "0x4": "Rinkeby",
+      "0x5": "Goerli",
+      "0x2a": "Kovan",
+    };
+
     const { ethereum } = window;
     setHasMetamask(ethereum && ethereum.isMetaMask);
 
     if (hasMetamask) {
+      ethereum.on("connect", (connectInfo) => {
+        console.log(connectInfo, chains[connectInfo.chainId]);
+        setNetwork(chains[connectInfo.chainId] || "UNSUPPORTED NETWORK");
+      });
+
       ethereum.on("accountsChanged", (accounts) => {
         console.log("accountsChanged", accounts);
         if (accounts.length) connectUser();
@@ -60,7 +73,7 @@ export default function Auth(props) {
     } else {
       //no metamask
     }
-  }, [hasMetamask, connectUser, disconnect, account]);
+  }, [hasMetamask, connectUser, disconnect, account, setNetwork]);
 
   function accountDisplay() {
     return `${account.substring(0, 6)}...${account.substring(38)}`;

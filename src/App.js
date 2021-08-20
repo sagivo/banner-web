@@ -13,6 +13,7 @@ function App() {
   const [connected, setConnected] = useState(false);
   const [txPending, setTxPending] = useState(false);
   const [txDone, setTxDone] = useState(false);
+  const [network, setNetwork] = useState();
 
   useEffect(() => {
     async function fetchData() {
@@ -38,10 +39,12 @@ function App() {
       <h1>CRYPTO BILLBOARD</h1>
       <div id="tagline">Your message to the world</div>
       <Billboard message={message} publisher={publisher} price={price} />
+      {network !== "Mainnet" && <div id="network">- {network} -</div>}
       <Auth
         message={message}
         setConnected={setConnected}
         setSigner={setSigner}
+        setNetwork={setNetwork}
       />
       {txDone && <div>Transaction is complete 🎉</div>}
       {connected && !txDone && (
@@ -53,7 +56,7 @@ function App() {
         Welcome to a decentralized social experiment 👋 <br />
         The billboard above{" "}
         <a
-          href={`https://rinkeby.etherscan.io/address/${process.env.REACT_APP_CONTRACT_ADDRESS}`}
+          href={`https://${process.env.REACT_APP_URL_PREFIX}etherscan.io/address/${process.env.REACT_APP_CONTRACT_ADDRESS}`}
           className="external"
           target="_blank"
           rel="noreferrer"

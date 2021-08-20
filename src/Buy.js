@@ -49,7 +49,7 @@ export default function Buy(props) {
         <div id="transaction">
           Please wait for{" "}
           <a
-            href={`https://etherscan.io/tx/${tx}`}
+            href={`https://${process.env.REACT_APP_URL_PREFIX}etherscan.io/tx/${tx}`}
             target="_blank"
             rel="noreferrer"
             className="external"

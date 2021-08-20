@@ -67,6 +67,13 @@ h1 {
   font-size: 14px;
 }
 
+#network {
+  color: yellow;
+  text-transform: uppercase;
+  margin-top: 10px;
+  /* border: 1px solid yellow; */
+}
+
 #billboard {
   margin: auto;
   z-index: 2;
