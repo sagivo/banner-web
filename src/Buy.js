@@ -9,7 +9,7 @@ export default function Buy(props) {
   const [showAdvance, setShowAdvance] = useState(false);
   const STEP = 0.01;
 
-  const { setTxPending } = props;
+  const { setTxPending, chain } = props;
 
   useEffect(() => {
     if (props.price) {
@@ -22,6 +22,7 @@ export default function Buy(props) {
     e.preventDefault();
     if (props.signer) {
       const res = await publishMessege(
+        chain,
         props.signer,
         message,
         ethers.utils.parseEther(newPrice.toString()).toString()

@@ -52,7 +52,12 @@ function App() {
       />
       {txDone && <div>Transaction is complete 🎉</div>}
       {connected && !txDone && chain && (
-        <Buy price={price} signer={signer} setTxPending={setTxPending} />
+        <Buy
+          price={price}
+          signer={signer}
+          setTxPending={setTxPending}
+          chain={chain}
+        />
       )}
 
       <div id="info">
