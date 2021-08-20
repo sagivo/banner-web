@@ -487,7 +487,11 @@ textarea {
 }
 
 #info {
-  margin: auto;
+  margin: 30px auto;
   width: 80%;
   text-align: left;
+}
+
+#footer {
+  margin: 50px;
 }

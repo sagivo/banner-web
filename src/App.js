@@ -3,12 +3,7 @@ import "./App.css";
 import Auth from "./Auth";
 import Billboard from "./Billboard";
 import Buy from "./Buy";
-import {
-  getPrice,
-  getMessage,
-  getPublisher,
-  subsrubeToNewMessage,
-} from "./utils/blockAccess";
+import { subsrubeToNewMessage, getInfo } from "./utils/blockAccess";
 
 function App() {
   const [message, setMessage] = useState();
@@ -20,13 +15,17 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      setMessage(await getMessage());
-      setPrice(await getPrice());
-      setPublisher(await getPublisher());
-      subsrubeToNewMessage((msg, pub, pri) => {
+      const setVars = (msg, pri, pub) => {
         setMessage(msg);
         setPrice(pri);
         setPublisher(pub);
+      };
+
+      const [msg, pri, pub] = await getInfo();
+      setVars(msg, pri, pub);
+
+      subsrubeToNewMessage((msg, pri, pub) => {
+        setVars(msg, pri, pub);
         setTxDone(true);
       });
     }
@@ -45,31 +44,40 @@ function App() {
       />
       {txDone && <div>Transaction is complete 🎉</div>}
       {connected && !txDone && <Buy price={price} signer={signer} />}
-      <h3>About</h3>
+
       <div id="info">
+        <h3>About</h3>
         Welcome to a decentralized social experiment 👋 <br />
-        The billboard above exists on the Etherume blockchain. The message is
-        censorship resistent and avaialble to everyone.
+        The billboard above{" "}
+        <a
+          href={`https://rinkeby.etherscan.io/address/${process.env.REACT_APP_CONTRACT_ADDRESS}`}
+          className="external"
+          target="_blank"
+          rel="noreferrer"
+        >
+          exists on the Etherume blockchain
+        </a>{" "}
+        The message is censorship-resistant and available to everyone.
         <br />
         <br />
         The billboard also shows the owner and price paid for the message to be
         published.
         <br />
-        In order to replace this message with your own message, you will need to
-        pay any ETH amount greather the previous price paid.
+        To override this message with your own, you will need to pay more ETH
+        than the previous price paid.
         <br />
         <br />
-        Your message will stay forever on the blockchain unless someone agrees
-        to pay more to publish their message.
+        Publishers are gifted a unique BLBD NFT 🦄.
         <br />
-        Publishing a message also provides the publisher with a unique BLBD NFT
-        🦄.
+        <br />
+        Your message will stay forever on the blockchain unless someone decides
+        to pay more to publish their message instead.
         <br />
         <br />
         Got something to tell the world? Publish it now!
       </div>
       <hr />
-      Footer
+      <div id="footer">Footer</div>
     </div>
   );
 }

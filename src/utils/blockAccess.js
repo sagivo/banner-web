@@ -11,23 +11,15 @@ const readContract = new ethers.Contract(
   provider
 );
 
-export async function getMessage() {
-  return await readContract.getMessage();
-}
-
-export async function getPrice() {
-  const price = await readContract.getPrice();
+export async function getInfo() {
+  const [message, price, publisher] = await readContract.getInfo();
   const num = ethers.utils.formatEther(price.toString());
-  return roundUp(num, 2);
+  return [message, roundUp(num, 2), publisher];
 }
 
 function roundUp(num, precision) {
   precision = Math.pow(10, precision);
   return Math.ceil(num * precision) / precision;
-}
-
-export async function getPublisher() {
-  return await readContract.getPublisher();
 }
 
 export async function publishMessege(signer, messege, value) {
@@ -44,8 +36,8 @@ export async function publishMessege(signer, messege, value) {
 }
 
 export function subsrubeToNewMessage(cb) {
-  readContract.on("NewMessage", (message, publisher, price) => {
+  readContract.on("NewMessage", (message, price, publisher) => {
     const num = ethers.utils.formatEther(price.toString());
-    cb(message, publisher, roundUp(num, 2));
+    cb(message, roundUp(num, 2), publisher);
   });
 }
