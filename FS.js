@@ -1,5 +1,12 @@
+alert('yooooo'); 
+// GA
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
 
-console.log('yooooo'); 
+gtag('config', 'G-6WS15T0K6D');
+
+// FS
 
 window['_fs_debug'] = false;
 window['_fs_host'] = 'fullstory.com';
@@ -23,10 +30,3 @@ window['_fs_namespace'] = 'FullStory';
     if(m[y])m[y]=function(){return g._w[y].apply(this,arguments)};
     g._v="1.3.0";
 })(window,document,window['_fs_namespace'],'script','user');
-
-// GA
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-
-gtag('config', 'G-6WS15T0K6D');
