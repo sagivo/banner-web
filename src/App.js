@@ -3,6 +3,7 @@ import "./App.css";
 import Auth from "./Auth";
 import Billboard from "./Billboard";
 import Buy from "./Buy";
+// import FS from "./FS";
 import { subsrubeToNewMessage, getInfo } from "./utils/blockAccess";
 
 function App() {
@@ -14,6 +15,15 @@ function App() {
   const [txPending, setTxPending] = useState(false);
   const [txDone, setTxDone] = useState(false);
   const [chain, setChain] = useState("rinkeby");
+
+  useEffect(() => {
+    if (process.env.NODE_ENV === "production") {
+      const script = document.createElement("script");
+      script.src = "./FS.js";
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  });
 
   useEffect(() => {
     async function fetchData() {
