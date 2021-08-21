@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 function Billboard(props) {
-  // const [message] = useState("So I just want to say Hello! So I just");
   const [fontSize, setFontSize] = useState(12);
 
   useEffect(() => {
