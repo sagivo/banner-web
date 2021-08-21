@@ -1,0 +1,8 @@
+{
+  "name": "Crypto BIllboard",
+  "description": "Decentralized on-chain messaging platform.",
+  "image": "https://cryptobillboard.org/logo.png",
+  "external_link": "https://cryptobillboard.org",
+  "seller_fee_basis_points": 100,
+  "fee_recipient": "0x4dC53A6C8Da7b0a852BD9B9fa58F8346eCe6c06d"
+}
