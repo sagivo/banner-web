@@ -16,15 +16,6 @@ function App() {
   const [chain, setChain] = useState("rinkeby");
 
   useEffect(() => {
-    // if (process.env.NODE_ENV === "production") {
-    const script = document.createElement("script");
-    script.src = "/FS.js";
-    script.async = true;
-    document.body.appendChild(script);
-    // }
-  });
-
-  useEffect(() => {
     async function fetchData() {
       const setVars = (msg, pri, pub) => {
         setMessage(msg);
@@ -102,6 +93,7 @@ function App() {
       </div>
       <hr />
       <div id="footer">Footer</div>
+      {process.env.NODE_ENV === "production" && <script srt="/FS.js"></script>}
     </div>
   );
 }
