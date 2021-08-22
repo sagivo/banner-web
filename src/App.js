@@ -16,6 +16,20 @@ function App() {
   const [chain, setChain] = useState("rinkeby");
 
   useEffect(() => {
+    if (process.env.NODE_ENV === "production") {
+      const appendScript = (scriptToAppend) => {
+        const script = document.createElement("script");
+        script.src = scriptToAppend;
+        script.async = true;
+        document.body.appendChild(script);
+      };
+
+      appendScript('https://www.googletagmanager.com/gtag/js?id=G-6WS15T0K6D"');
+      appendScript(process.env.PUBLIC_URL + "/FS.js");
+    }
+  }, []);
+
+  useEffect(() => {
     async function fetchData() {
       const setVars = (msg, pri, pub) => {
         setMessage(msg);
@@ -93,7 +107,6 @@ function App() {
       </div>
       <hr />
       <div id="footer">Footer</div>
-      {process.env.NODE_ENV === "production" && <script srt="/FS.js"></script>}
     </div>
   );
 }

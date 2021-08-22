@@ -1,3 +1,12 @@
+// GA
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-6WS15T0K6D');
+
+// FS
+
 window['_fs_debug'] = false;
 window['_fs_host'] = 'fullstory.com';
 window['_fs_script'] = 'edge.fullstory.com/s/fs.js';
