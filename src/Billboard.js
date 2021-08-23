@@ -70,6 +70,7 @@ function Billboard(props) {
       </div>
 
       <div id="base">
+        From:&nbsp;
         <a
           href={`https://${process.env.REACT_APP_URL_PREFIX}etherscan.io/address/${props.publisher}`}
           target="_blank"

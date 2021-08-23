@@ -219,7 +219,7 @@ h1 {
 }
 
 #base {
-  min-width: 180px;
+  min-width: 230px;
   width: 40%;
   height: 40px;
   background-color: rgb(54, 54, 54);
@@ -434,20 +434,23 @@ h1 {
   text-align: center;
 }
 
-#buy form input[type="submit"],
+/* #buy form input[type="submit"],
 #buy form textarea {
   width: 100%;
-}
+} */
 
 textarea {
   margin-top: 20px;
   resize: none;
   outline: none !important;
-  background: none;
-  color: white;
+
+  /* background: none; */
+  /* color: white; */
 
   border: 2px solid white;
   text-align: center;
+  /* box-shadow: 0 0 5rem #fff, 0 0 0.2rem #fff, 0 0 2rem #bc13fe,
+    0 0 0.8rem #bc13fe, 0 0 2.8rem #bc13fe, inset 0 0 1.3rem #bc13fe; */
 }
 
 #buy form input[type="number"] {
@@ -491,6 +494,18 @@ textarea {
 
 #buy form input[type="submit"] {
   margin-top: 20px;
+  box-shadow: 0 0 5rem #fff, 0 0 0.2rem #fff, 0 0 2rem #bc13fe,
+    0 0 0.8rem #bc13fe, 0 0 2.8rem #bc13fe, inset 0 0 1.3rem #bc13fe;
+}
+
+#advance {
+  background: none;
+  color: white;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+  font-size: var(--sizeSmall);
+  cursor: pointer;
 }
 
 #info {

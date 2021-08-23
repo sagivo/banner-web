@@ -62,9 +62,12 @@ export default function Buy(props) {
       ) : (
         <form onSubmit={submit}>
           <div id="custom-button">
-            <a href="#account" onClick={() => setShowAdvance(!showAdvance)}>
-              {showAdvance ? "basic" : "advance"}
-            </a>
+            <input
+              type="button"
+              id="advance"
+              onClick={() => setShowAdvance(!showAdvance)}
+              value={showAdvance ? "basic" : "advance"}
+            />
           </div>
           <div className="clear"></div>
           <div className="grow-wrap">
