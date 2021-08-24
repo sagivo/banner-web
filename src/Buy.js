@@ -46,6 +46,7 @@ export default function Buy(props) {
 
   return props.price === 0 || !!props.price ? (
     <div id="buy">
+      <h2>Override billboard</h2>
       {tx ? (
         <div id="transaction">
           Please wait for{" "}

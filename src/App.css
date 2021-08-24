@@ -6,7 +6,7 @@
   --neon-border-color: #08f;
   --billboard-width: 80%;
   --billboard-max-width: 800px;
-  --sizeMed: 20px;
+  --sizeMed: 16px;
   --sizeSmall: 12px;
 }
 
@@ -34,7 +34,7 @@ button {
   background-color: white;
   color: black;
   /* border-radius: 30px; */
-  padding: 20px;
+  padding: 10px;
   cursor: pointer;
   font-weight: bold;
 }
@@ -67,16 +67,19 @@ h1 {
   font-size: 14px;
 }
 
+#cta-top {
+  margin-top: 20px;
+}
+
 #chain {
   color: yellow;
   text-transform: uppercase;
   margin-top: 10px;
-  /* border: 1px solid yellow; */
+  font-size: var(--sizeSmall);
 }
 
 #billboard {
   margin: auto;
-  z-index: 2;
   padding: 60px 20px;
   border-radius: 15px;
   font-family: "Orbitron";
@@ -219,8 +222,8 @@ h1 {
 }
 
 #base {
-  min-width: 230px;
-  width: 40%;
+  min-width: 280px;
+  width: 30%;
   height: 40px;
   background-color: rgb(54, 54, 54);
   margin: auto;
@@ -238,7 +241,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 2;
+  font-size: var(--sizeSmall);
 }
 
 .price-pole {
@@ -246,6 +249,12 @@ h1 {
   height: 30px;
   background-color: rgb(133, 133, 133);
   margin-top: -70px;
+}
+
+#base-price button {
+  width: 180px;
+  /* box-shadow: 0 0 5rem #fff, 0 0 0.2rem #fff, 0 0 2rem #bc13fe,
+    0 0 0.8rem #bc13fe, 0 0 2.8rem #bc13fe, inset 0 0 1.3rem #bc13fe; */
 }
 
 #road {
@@ -258,6 +267,7 @@ h1 {
 
 #sky {
   height: 60px;
+  margin-top: -20px;
 }
 
 .stars {
@@ -416,6 +426,10 @@ h1 {
 
 /* ------------------ BUY ------------------ */
 #buy {
+  margin: 20px;
+  padding-bottom: 30px;
+  border-radius: 20px;
+  border: 1px solid white;
   text-align: center;
 }
 
@@ -449,8 +463,6 @@ textarea {
 
   border: 2px solid white;
   text-align: center;
-  /* box-shadow: 0 0 5rem #fff, 0 0 0.2rem #fff, 0 0 2rem #bc13fe,
-    0 0 0.8rem #bc13fe, 0 0 2.8rem #bc13fe, inset 0 0 1.3rem #bc13fe; */
 }
 
 #buy form input[type="number"] {
@@ -512,8 +524,10 @@ textarea {
   margin: 30px auto;
   width: 80%;
   text-align: left;
+  /* font-size: var(--sizeSmall); */
 }
 
 #footer {
   margin: 50px;
+  font-size: var(--sizeSmall);
 }

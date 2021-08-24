@@ -1,10 +1,79 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
+import { accountDisplay } from "./General";
+import { ethers } from "ethers";
 
 function Billboard(props) {
   const [fontSize, setFontSize] = useState(12);
+  const [hasMetamask, setHasMetamask] = useState(false);
+  const [account, setAccount] = useState(localStorage.getItem("account"));
+  const { setUserId, setSigner, setChain } = props;
+
+  const { message } = props;
+
+  const disconnect = useCallback(() => {
+    setAccount(null);
+    setUserId(null);
+    localStorage.removeItem("account");
+  }, [setUserId]);
+
+  const connectUser = useCallback(async () => {
+    console.log("connectUser");
+    const supportedChains = {
+      // "0x1": "mainnet",
+      "0x4": "rinkeby",
+    };
+
+    const { ethereum } = window;
+
+    try {
+      const accounts = await ethereum.request({
+        method: "eth_requestAccounts",
+      });
+      if (accounts[0]) {
+        const acnt = ethers.utils.getAddress(accounts[0]);
+        setAccount(acnt);
+        setUserId(acnt);
+        localStorage.setItem("account", acnt);
+
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        setSigner(signer);
+        const chainId = await ethereum.request({ method: "eth_chainId" });
+        setChain(supportedChains[chainId]);
+      } else disconnect();
+    } catch (error) {
+      console.error("getAccount ERROR", error);
+      disconnect();
+    }
+  }, [disconnect, setUserId, setSigner, setChain]);
 
   useEffect(() => {
-    const len = props.message ? props.message.length : 1000;
+    const { ethereum } = window;
+    setHasMetamask(ethereum && ethereum.isMetaMask);
+
+    if (hasMetamask) {
+      ethereum.on("accountsChanged", (accounts) => {
+        console.log("accountsChanged", accounts);
+        if (accounts.length) connectUser();
+        else disconnect();
+      });
+      ethereum.on("disconnect", () => {
+        console.log("disconnect");
+        disconnect();
+      });
+      ethereum.on("chainChanged", (chainId) => {
+        console.log("chainChanged", chainId);
+        window.location.reload();
+      });
+      // update9
+      if (account) connectUser();
+    } else {
+      //no metamask
+    }
+  }, [hasMetamask, connectUser, disconnect, account]);
+
+  useEffect(() => {
+    const len = message ? message.length : 1000;
     if (len > 800) setFontSize(16);
     else if (len > 500) setFontSize(20);
     else if (len > 250) setFontSize(30);
@@ -16,7 +85,7 @@ function Billboard(props) {
     else if (len > 6) setFontSize(100);
     else if (len > 3) setFontSize(130);
     else setFontSize(200);
-  }, [props.message]);
+  }, [message]);
 
   function publisherDisplay() {
     if (props.publisher)
@@ -64,13 +133,18 @@ function Billboard(props) {
       <div id="pole"></div>
 
       <div id="base-price">
-        <div className="price-pole"></div>
-        <div>PAID Ξ{props.price}</div>
-        <div className="price-pole"></div>
+        <div className="price-pole">&nbsp;</div>
+        {account ? (
+          "CONNECTED " + accountDisplay(account)
+        ) : (
+          <button onClick={() => connectUser()}>CONNECT WALLET</button>
+        )}
+
+        <div className="price-pole">&nbsp;</div>
       </div>
 
       <div id="base">
-        From:&nbsp;
+        Paid Ξ{props.price} By &nbsp;
         <a
           href={`https://${process.env.REACT_APP_URL_PREFIX}etherscan.io/address/${props.publisher}`}
           target="_blank"
