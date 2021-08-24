@@ -64,7 +64,7 @@ export default function Buy(props) {
           <div id="custom-button">
             <input
               type="button"
-              id="advance"
+              className="naked-button"
               onClick={() => setShowAdvance(!showAdvance)}
               value={showAdvance ? "basic" : "settings"}
             />
@@ -99,8 +99,8 @@ export default function Buy(props) {
               <div id="tip">
                 Price has to be greater than Ξ{props.price}.
                 <br />
-                The heigher you set the price - the harder is to anyone to
-                override your message.
+                The heigher you set the price - the harder is to override your
+                message.
               </div>
             </div>
           )}

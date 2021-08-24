@@ -511,7 +511,7 @@ textarea {
     0 0 0.8rem #bc13fe, 0 0 2.8rem #bc13fe, inset 0 0 1.3rem #bc13fe;
 }
 
-#advance {
+.naked-button {
   background: none;
   color: white;
   border: none;
@@ -531,11 +531,6 @@ textarea {
   color: black; */
   padding: 20px;
   border-radius: 15px;
-}
-
-#footer {
-  margin: 50px;
-  font-size: var(--sizeSmall);
 }
 
 /* ------------------ LOADING ------------------ */
@@ -563,4 +558,9 @@ textarea {
   100% {
     transform: rotate(360deg);
   }
+}
+
+#footer {
+  margin: 20px;
+  font-size: var(--sizeSmall);
 }

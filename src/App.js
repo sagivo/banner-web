@@ -82,40 +82,132 @@ function App() {
           />
         )}
         <div id="info">
-          <p>Crypto Billboard is a decentralized social publishing zone.</p>
+          <p>Crypto Billboard is a decentralized social publishing.</p>
           <p>
-            The billboard above{" "}
+            The billboard above is{" "}
             <a
               href={`https://${process.env.REACT_APP_URL_PREFIX}etherscan.io/address/${process.env.REACT_APP_CONTRACT_ADDRESS}`}
               className="external"
               target="_blank"
               rel="noreferrer"
             >
-              exists
+              stored
             </a>{" "}
-            on the Etherume blockchain. The message is censorship-resistant and
+            on the Ethereum blockchain. The message is censorship-resistant and
             available to everyone 24/7.
           </p>
           <p>
             The billboard enables everyone to publish their own message on it.
             <br />
-            The message stays forever on the billboard unless overrided buy
+            The message stays forever on the billboard unless overrode by
             someone else.
             <br />
-            The publishing price only goes up and must be greather than the last
+            The publishing price only goes up and must be greater than the last
             price paid.
           </p>
           <p>
-            Publishers are also gifted a unique BLBD NFT. These NFTs are minted
-            only when publishing a new message and their number is capped by the
-            number of publishers.
+            Publishers are awarded a unique{" "}
+            <a
+              target="_blank"
+              rel="noreferrer"
+              class="external"
+              href="https://gateway.pinata.cloud/ipfs/QmNgowFAHNHDBqKmRtL327nUvEFSCpnz4T2sgLoBGttdgz"
+            >
+              BLBD NFT
+            </a>
+            . The number of BLBD NFTs is capped by the number of total
+            publishers.
           </p>
           {!showMore && (
             <p>
-              <button onClick={() => setShowMore(!showMore)}>Learn more</button>
+              <button
+                className="naked-button"
+                onClick={() => setShowMore(!showMore)}
+              >
+                Q&A
+              </button>
             </p>
           )}
-          {showMore && <div id="more">some more info</div>}
+          {showMore && (
+            <div id="more">
+              <hr />
+              <p>Q: What is Crypto Billboard?</p>
+              <p>
+                A: Crypto Billboard is a social experiment backed by the
+                blockchain. Traditional media companies decide what to publish
+                and control who can see the content. This billboard democratizes
+                publishing. No matter if it's an advise, a joke, or a marriage
+                proposal - anyone can publish their own content on this
+                billboard. The billboard automatically updates every time
+                there's a new content. Becase the message is on the blockchain -
+                no one can take it down or edit it.
+              </p>
+              <p>Q: How do I publish my message?</p>
+              <p>
+                To publish a message you can choose any Ether amount greater
+                than the current base price. The base price is the price last
+                paid to publish. Your price then becomes the new base price for
+                others. The higher you set the base price the harder it will be
+                to override your message.
+              </p>
+              <p>Q: How do I connect to Ethereum wallet?</p>
+              <p>
+                A: The easiest way to connect to the Ethereum mainnet is to use
+                the{" "}
+                <a
+                  href="https://metamask.io"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="external"
+                >
+                  MetaMask
+                </a>{" "}
+                plugin for your browser. To have Ether in your wallet you will
+                need to buy some from an exchange like{" "}
+                <a
+                  href="https://www.coinbase.com/join/ofek_q"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="external"
+                >
+                  Coinbase
+                </a>
+                .
+              </p>
+              <p>Q: What about the NFT?</p>
+              <p>
+                Q: When you purchase a message you also get a{" "}
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  class="external"
+                  href="https://gateway.pinata.cloud/ipfs/QmNgowFAHNHDBqKmRtL327nUvEFSCpnz4T2sgLoBGttdgz"
+                >
+                  BLBD NFT
+                </a>
+                . This NFT is credited to you and you are welcome to transfer or
+                sell it at any time. While there is no actual value to the NFT,
+                only people who publish a message get it. Because the price
+                always goes up, the sooner you publish a message the cheaper you
+                pay for the NFT.
+              </p>
+              <p>Q: Why should I do it?</p>
+              <p>
+                Do you have a message to the world? Do you want to be part of an
+                exclusive group? Do you want to own a BLBD NFT? If the answer is
+                yes,{" "}
+                <a
+                  href="https://www.youtube.com/watch?v=ZXsQAXx_ao0"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="external"
+                >
+                  just do it
+                </a>
+                .
+              </p>
+            </div>
+          )}
         </div>
       </div>
     );
@@ -125,17 +217,20 @@ function App() {
     <div className="App">
       <h1>CRYPTO BILLBOARD</h1>
       <div id="tagline">
-        Publish your message to be part of the blockchain history!
+        Publish on the billboard and be part of the blockchain history!
       </div>
       {chain !== "mainnet" && (
-        <div id="chain">- {chain ? chain : "unsupported network"} -</div>
+        <div id="chain">
+          - {chain ? chain : "Pnsupported network. Please switch to mainnet"} -
+        </div>
       )}
 
       {showHP()}
       {showBuy()}
 
       <div id="footer">
-        Make history - publish your message on the billboard blockchain.
+        Make history - publish your message on the billboard. Empowered by the
+        blockchain.
       </div>
     </div>
   );
