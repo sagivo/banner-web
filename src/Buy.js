@@ -67,7 +67,7 @@ export default function Buy(props) {
               type="button"
               id="advance"
               onClick={() => setShowAdvance(!showAdvance)}
-              value={showAdvance ? "basic" : "advance"}
+              value={showAdvance ? "basic" : "settings"}
             />
           </div>
           <div className="clear"></div>
