@@ -99,7 +99,8 @@ export default function Buy(props) {
               <div id="tip">
                 Price has to be greater than Ξ{props.price}.
                 <br />
-                Message stays until someone pays more than you.
+                The heigher you set the price - the harder is to anyone to
+                override your message.
               </div>
             </div>
           )}

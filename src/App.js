@@ -13,6 +13,7 @@ function App() {
   const [txDone, setTxDone] = useState(false);
   const [chain, setChain] = useState("rinkeby");
   const [userId, setUserId] = useState();
+  const [showMore, setShowMore] = useState(false);
 
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
@@ -81,34 +82,40 @@ function App() {
           />
         )}
         <div id="info">
-          Welcome to a decentralized social experiment 👋 <br />
-          The billboard above{" "}
-          <a
-            href={`https://${process.env.REACT_APP_URL_PREFIX}etherscan.io/address/${process.env.REACT_APP_CONTRACT_ADDRESS}`}
-            className="external"
-            target="_blank"
-            rel="noreferrer"
-          >
-            exists on the Etherume blockchain
-          </a>{" "}
-          The message is censorship-resistant and available to everyone.
-          <br />
-          <br />
-          The billboard also shows the owner and price paid for the message to
-          be published.
-          <br />
-          To override this message with your own, you will need to pay more ETH
-          than the previous price paid.
-          <br />
-          <br />
-          Publishers are gifted a unique BLBD NFT 🦄.
-          <br />
-          <br />
-          Your message will stay forever on the blockchain unless someone
-          decides to pay more to publish their message instead.
-          <br />
-          <br />
-          Got something to tell the world? Publish it now!
+          <p>Crypto Billboard is a decentralized social publishing zone.</p>
+          <p>
+            The billboard above{" "}
+            <a
+              href={`https://${process.env.REACT_APP_URL_PREFIX}etherscan.io/address/${process.env.REACT_APP_CONTRACT_ADDRESS}`}
+              className="external"
+              target="_blank"
+              rel="noreferrer"
+            >
+              exists
+            </a>{" "}
+            on the Etherume blockchain. The message is censorship-resistant and
+            available to everyone 24/7.
+          </p>
+          <p>
+            The billboard enables everyone to publish their own message on it.
+            <br />
+            The message stays forever on the billboard unless overrided buy
+            someone else.
+            <br />
+            The publishing price only goes up and must be greather than the last
+            price paid.
+          </p>
+          <p>
+            Publishers are also gifted a unique BLBD NFT. These NFTs are minted
+            only when publishing a new message and their number is capped by the
+            number of publishers.
+          </p>
+          {!showMore && (
+            <p>
+              <button onClick={() => setShowMore(!showMore)}>Learn more</button>
+            </p>
+          )}
+          {showMore && <div id="more">some more info</div>}
         </div>
       </div>
     );
@@ -127,7 +134,6 @@ function App() {
       {showHP()}
       {showBuy()}
 
-      <hr />
       <div id="footer">
         Make history - publish your message on the billboard blockchain.
       </div>
