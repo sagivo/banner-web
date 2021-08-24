@@ -67,7 +67,11 @@ function App() {
   const showBuy = () => {
     return (
       <div>
-        {txDone && <div>Transaction is complete 🎉</div>}
+        {txDone && (
+          <div id="complete">
+            Transaction is done. <br /> Your message is on the billboard 🎉
+          </div>
+        )}
         {userId && !txDone && chain && (
           <Buy
             price={price}

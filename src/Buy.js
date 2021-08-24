@@ -49,16 +49,15 @@ export default function Buy(props) {
       <h2>Override billboard</h2>
       {tx ? (
         <div id="transaction">
-          Please wait for{" "}
           <a
             href={`https://${process.env.REACT_APP_URL_PREFIX}etherscan.io/tx/${tx}`}
             target="_blank"
             rel="noreferrer"
             className="external"
           >
-            transaction
+            Transaction
           </a>{" "}
-          to complete...{" "}
+          is pending <div className="loader"></div>
         </div>
       ) : (
         <form onSubmit={submit}>
