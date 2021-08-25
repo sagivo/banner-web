@@ -134,12 +134,12 @@ function Billboard(props) {
 
       <div id="base-price">
         <div className="price-pole">&nbsp;</div>
-        {account ? (
-          "CONNECTED " + accountDisplay(account)
-        ) : (
-          <button onClick={() => connectUser()}>CONNECT WALLET</button>
-        )}
-
+        {hasMetamask && account
+          ? "CONNECTED " + accountDisplay(account)
+          : hasMetamask && (
+              <button onClick={() => connectUser()}>CONNECT WALLET</button>
+            )}
+        {!hasMetamask && "Install MetaMask to join"}
         <div className="price-pole">&nbsp;</div>
       </div>
 

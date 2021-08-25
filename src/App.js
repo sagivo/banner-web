@@ -218,7 +218,12 @@ function App() {
                   Discord
                 </a>
                 , follow us on{" "}
-                <a href="" target="_blank" rel="noreferrer" class="external">
+                <a
+                  href="https://twitter.com/CryptoBLBD"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="external"
+                >
                   Twitter
                 </a>
                 , or check our open-source code in{" "}
