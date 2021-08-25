@@ -206,6 +206,31 @@ function App() {
                 </a>
                 .
               </p>
+              <p>How can I join?</p>
+              <p>
+                Welcome to the community! We are in{" "}
+                <a
+                  href="https://discord.gg/sTgSC95acY"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="external"
+                >
+                  Discord
+                </a>
+                , follow us on{" "}
+                <a href="" target="_blank" rel="noreferrer" class="external">
+                  Twitter
+                </a>
+                , or check our open-source code in{" "}
+                <a
+                  href="https://github.com/puffygeek/crypto-billboard"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="external"
+                >
+                  GitHub
+                </a>
+              </p>
             </div>
           )}
         </div>
