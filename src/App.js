@@ -209,10 +209,16 @@ function App() {
               <p>Where I can find out more?</p>
               <p>
                 You can read the motivation behind this experiment{" "}
-                <a href="https://sagivo.com/startup/crypto/publishing/2021/08/27/Crypto-Billboard.html">
+                <a
+                  href="https://sagivo.com/startup/crypto/publishing/2021/08/27/Crypto-Billboard.html"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="external"
+                >
                   here
                 </a>
-                . Join us on{" "}
+                .<br />
+                Join us on{" "}
                 <a
                   href="https://discord.gg/sTgSC95acY"
                   target="_blank"
