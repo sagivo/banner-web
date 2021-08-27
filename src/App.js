@@ -206,9 +206,13 @@ function App() {
                 </a>
                 .
               </p>
-              <p>How can I join?</p>
+              <p>Where I can find out more?</p>
               <p>
-                Welcome to the community! We are in{" "}
+                You can read the motivation behind this experiment{" "}
+                <a href="https://sagivo.com/startup/crypto/publishing/2021/08/27/Crypto-Billboard.html">
+                  here
+                </a>
+                . Join us on{" "}
                 <a
                   href="https://discord.gg/sTgSC95acY"
                   target="_blank"
