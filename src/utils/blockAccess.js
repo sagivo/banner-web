@@ -5,18 +5,18 @@ const getContract = (chain) => {
   console.log("chain", chain);
   const chains = {
     mainnet: {
-      address: "",
+      address: process.env.REACT_APP_CONTRACT_MAINNET_ADDRESS,
       infuraName: "mainnet",
     },
     rinkeby: {
-      address: "0x6f784d11BF8040b047a28d85cbd3b0b186BD453C",
+      address: process.env.REACT_APP_CONTRACT_RINKEBY_ADDRESS,
       infuraName: "rinkeby",
     },
   };
 
   const provider = new ethers.providers.InfuraProvider(
     chains[chain].infuraName,
-    "5ac032ada81f40b3808b1c90bacc95ba"
+    process.env.REACT_APP_INFURA_ENDPOINT
   );
   return new ethers.Contract(chains[chain].address, abi, provider);
 };

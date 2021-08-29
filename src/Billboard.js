@@ -6,9 +6,7 @@ function Billboard(props) {
   const [fontSize, setFontSize] = useState(12);
   const [hasMetamask, setHasMetamask] = useState(false);
   const [account, setAccount] = useState(localStorage.getItem("account"));
-  const { setUserId, setSigner, setChain } = props;
-
-  const { message } = props;
+  const { setUserId, setSigner, setChain, message } = props;
 
   const disconnect = useCallback(() => {
     setAccount(null);

@@ -9,14 +9,14 @@ export default function Buy(props) {
   const [showAdvance, setShowAdvance] = useState(false);
   const STEP = 0.01;
 
-  const { setTxPending, chain } = props;
+  const { chain } = props;
 
   useEffect(() => {
     if (props.price) {
       const suggested = props.price + STEP;
       setNewPrice(round(suggested));
     }
-  }, [props.price, setTxPending]);
+  }, [props.price, props.setTxPending]);
 
   const submit = async (e) => {
     e.preventDefault();

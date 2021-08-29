@@ -265,7 +265,7 @@ function App() {
       </div>
       {chain !== "mainnet" && (
         <div id="chain">
-          - {chain ? chain : "Pnsupported network. Please switch to mainnet"} -
+          - {chain ? chain : "Usupported network. Please switch to mainnet"} -
         </div>
       )}
 
