@@ -261,7 +261,7 @@ function App() {
     <div className="App">
       <h1>CRYPTO BILLBOARD</h1>
       <div id="tagline">
-        Publish on the billboard and be part of the blockchain history!
+        Post your message and be part of the blockchain history!
       </div>
       {chain !== "mainnet" && (
         <div id="chain">
