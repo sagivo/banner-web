@@ -16,6 +16,10 @@ function App() {
   const [showMore, setShowMore] = useState(false);
 
   useEffect(() => {
+    //redirect NFTs
+    if (window.location.href.includes("/NFT/"))
+      window.location.replace("/NFT/BLBD.json");
+
     if (process.env.NODE_ENV === "production") {
       const appendScript = (scriptToAppend) => {
         const script = document.createElement("script");
@@ -110,7 +114,7 @@ function App() {
             <a
               target="_blank"
               rel="noreferrer"
-              class="external"
+              className="external"
               href="https://gateway.pinata.cloud/ipfs/QmNgowFAHNHDBqKmRtL327nUvEFSCpnz4T2sgLoBGttdgz"
             >
               BLBD NFT
@@ -158,7 +162,7 @@ function App() {
                   href="https://metamask.io"
                   target="_blank"
                   rel="noreferrer"
-                  class="external"
+                  className="external"
                 >
                   MetaMask
                 </a>{" "}
@@ -168,7 +172,7 @@ function App() {
                   href="https://www.coinbase.com/join/ofek_q"
                   target="_blank"
                   rel="noreferrer"
-                  class="external"
+                  className="external"
                 >
                   Coinbase
                 </a>
@@ -180,7 +184,7 @@ function App() {
                 <a
                   target="_blank"
                   rel="noreferrer"
-                  class="external"
+                  className="external"
                   href="https://gateway.pinata.cloud/ipfs/QmNgowFAHNHDBqKmRtL327nUvEFSCpnz4T2sgLoBGttdgz"
                 >
                   BLBD NFT
@@ -200,7 +204,7 @@ function App() {
                   href="https://www.youtube.com/watch?v=ZXsQAXx_ao0"
                   target="_blank"
                   rel="noreferrer"
-                  class="external"
+                  className="external"
                 >
                   just do it
                 </a>
@@ -213,7 +217,7 @@ function App() {
                   href="https://sagivo.com/startup/crypto/publishing/2021/08/27/Crypto-Billboard.html"
                   target="_blank"
                   rel="noreferrer"
-                  class="external"
+                  className="external"
                 >
                   here
                 </a>
@@ -223,7 +227,7 @@ function App() {
                   href="https://discord.gg/sTgSC95acY"
                   target="_blank"
                   rel="noreferrer"
-                  class="external"
+                  className="external"
                 >
                   Discord
                 </a>
@@ -232,7 +236,7 @@ function App() {
                   href="https://twitter.com/CryptoBLBD"
                   target="_blank"
                   rel="noreferrer"
-                  class="external"
+                  className="external"
                 >
                   Twitter
                 </a>
@@ -241,7 +245,7 @@ function App() {
                   href="https://github.com/puffygeek/crypto-billboard"
                   target="_blank"
                   rel="noreferrer"
-                  class="external"
+                  className="external"
                 >
                   GitHub
                 </a>
