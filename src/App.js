@@ -128,7 +128,7 @@ function App() {
                 className="naked-button"
                 onClick={() => setShowMore(!showMore)}
               >
-                Q&A
+                Learn more
               </button>
             </p>
           )}
