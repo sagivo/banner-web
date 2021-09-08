@@ -1,3 +1,3 @@
 # Crypto Billboard
 
-This is the frontednd for [https://cryptobillboard.org](cryptobillboard.org)
+This is the frontednd for [cryptobillboard.org](https://cryptobillboard.org)
