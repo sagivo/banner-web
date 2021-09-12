@@ -11,7 +11,7 @@ function App() {
   const [signer, setSigner] = useState();
   const [txPending, setTxPending] = useState(false);
   const [txDone, setTxDone] = useState(false);
-  const [chain, setChain] = useState("rinkeby");
+  const [chain, setChain] = useState("mainnet");
   const [userId, setUserId] = useState();
   const [showMore, setShowMore] = useState(false);
 

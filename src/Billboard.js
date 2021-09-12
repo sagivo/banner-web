@@ -17,7 +17,7 @@ function Billboard(props) {
   const connectUser = useCallback(async () => {
     console.log("connectUser");
     const supportedChains = {
-      // "0x1": "mainnet",
+      "0x1": "mainnet",
       "0x4": "rinkeby",
     };
 
