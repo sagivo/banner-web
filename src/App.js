@@ -86,7 +86,7 @@ function App() {
           />
         )}
         <div id="info">
-          <p>Crypto Billboard is a decentralized social publishing.</p>
+          <p>Crypto Billboard is a decentralized social experiment.</p>
           <p>
             The billboard above is{" "}
             <a
