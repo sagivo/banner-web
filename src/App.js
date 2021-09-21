@@ -90,7 +90,7 @@ function App() {
           <p>
             The billboard above is{" "}
             <a
-              href={`https://${process.env.REACT_APP_URL_PREFIX}etherscan.io/address/${process.env.REACT_APP_CONTRACT_ADDRESS}`}
+              href={`https://${process.env.REACT_APP_URL_PREFIX}etherscan.io/address/${process.env.REACT_APP_CONTRACT_MAINNET_ADDRESS}`}
               className="external"
               target="_blank"
               rel="noreferrer"
